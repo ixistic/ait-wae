@@ -1,2 +1,8 @@
-<h1>Basics#index</h1>
-<p>Find me in app/views/basics/index.html.erb</p>
+<h1>Top 10 trending videos on YouTube</h1>
+<% @result.each do |video| %>
+    <img src="<%= video[2] %>">
+    <h3><a href="<%= video[1] %>"><%= video[0] %></a></h3>
+<% end %>
+
+ref: http://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api
+ref2: http://www.nokogiri.org/tutorials/parsing_an_html_xml_document.html
