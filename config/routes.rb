@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'basic1/index'
+  resources :basics
 
-  root 'basic1#index'
+  root :to => redirect('/basics')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
