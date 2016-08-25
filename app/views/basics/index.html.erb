@@ -1,6 +1,6 @@
 <h1>Top 10 trending videos on YouTube</h1>
 <% @result.each do |video| %>
-    <img src="<%= video[2] %>">
+    <img src="<%= video[2] %>" alt="Image not loading">
     <h3><a href="<%= video[1] %>"><%= video[0] %></a></h3>
 <% end %>
 
