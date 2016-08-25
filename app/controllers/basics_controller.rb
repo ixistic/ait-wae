@@ -15,4 +15,24 @@ class BasicsController < ApplicationController
                       ]}
 
   end
+
+  # About to divide bt 0
+  def exception
+
+    # ZeroDivisionError (divided by 0):
+    # app/controllers/basics_controller.rb:20:in `/'
+    # app/controllers/basics_controller.rb:20:in `exception'
+    # Rendering /Users/ixistic/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+    # Rendering /Users/ixistic/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+    # Rendered /Users/ixistic/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.1ms)
+    # Rendering /Users/ixistic/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+    # Rendered /Users/ixistic/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+    # Rendering /Users/ixistic/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+    # Rendered /Users/ixistic/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+    # Rendered /Users/ixistic/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (80.0ms)
+
+    @result = 1/0
+
+  end
+
 end
