@@ -1,14 +1,32 @@
 <h1>YouTube's Top 10 Trending Videos</h1>
+<<<<<<< HEAD
+=======
+
+<ol>
+>>>>>>> e07a51d5f7a666077cc4ed9317ec9ce8136b3c1c
 <% @result.each do |video| %>
-    <img src="<%= video[2] %>" alt="Image not loading">
-    <h3><a href="<%= video[1] %>"><%= video[0] %></a></h3>
+    <li>
+      <a href="<%= video[1] %>"><img src="<%= video[2] %>" alt="Image is not loading"></a>
+      <a href="<%= video[1] %>"><%= video[0] %></a>
+    </li><br/>
 <% end %>
+</ol>
 
 <h3>References</h3>
+<<<<<<< HEAD
 <ul>
   <li>http://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api</li>
   <li>http://www.nokogiri.org/tutorials/parsing_an_html_xml_document.html</li>
   <li>http://ryandao.net/ruby-rails-screen-scraping-nikogiri-and-openuri/</li>
 </ul>
+=======
+  <ul>
+    <li>http://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api</li>
+    <li>http://www.nokogiri.org/tutorials/parsing_an_html_xml_document.html</li>
+    <li>http://ryandao.net/ruby-rails-screen-scraping-nikogiri-and-openuri</li>
+  </ul>
+
+<p>Return to <a href="/">homepage</a></p>
+>>>>>>> e07a51d5f7a666077cc4ed9317ec9ce8136b3c1c
 
 <p>Return to <a href="/">homepage</a></p>
