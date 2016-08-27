@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   get 'basics', to: 'basics#index'
-  get 'basics/youtube-topten', to: 'basics#youtube_topten'
+  get 'basics/youtube-top-ten'
   get 'basics/exception', to: 'basics#exception'
   get 'basics/exception-explanation', to: 'basics#exception_explanation'
 
