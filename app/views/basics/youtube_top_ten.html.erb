@@ -1,0 +1,16 @@
+<h1>YouTube's Top 10 Trending Videos</h1>
+
+<ol>
+  <% @result.each do |video| %>
+      <li>
+        <a href="<%= video[1] %>"><img src="<%= video[2] %>" alt="Image is not loading"></a>
+        <a href="<%= video[1] %>"><%= video[0] %></a>
+      </li><br/>
+  <% end %>
+</ol>
+
+<h4>Menu</h4>
+<ul>
+  <li>Return to <a href="/basics">solution</a></li>
+  <li>Return to <a href="/">homepage</a></li>
+</ul>
