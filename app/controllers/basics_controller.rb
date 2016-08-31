@@ -1,4 +1,9 @@
 class BasicsController < ApplicationController
+
+  def task1
+
+  end
+
   def youtube_top_ten
     @doc = Nokogiri::HTML(open('https://www.youtube.com/feed/trending'), nil, Encoding::UTF_8.to_s)
               .css('li.expanded-shelf-content-item-wrapper')

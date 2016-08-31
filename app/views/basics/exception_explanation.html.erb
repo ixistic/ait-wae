@@ -5,12 +5,8 @@
   <li>@result is then displayed in a view (exception.html.erb).</li>
   <li>A link that points to exception.html.erb is placed on the homepage.
     The link will trigger the divide-by-zero exception when clicked.</li>
-  <li>View <a href="/basics/exception">a divide-by-zero exception</a>.</li>
+  <li>View <%= link_to 'a divide-by-zero exception', exception_path %>.</li>
   <li>Based on our understanding of the assignment task, the exception doesn't need to be caught right now.</li>
 </ol>
 
-<h4>Menu</h4>
-<ul>
-  <li>Return to <a href="/basics">solution</a></li>
-  <li>Return to <a href="/">homepage</a></li>
-</ul>
+<%= render partial: 'basics/menu' %>

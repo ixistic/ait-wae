@@ -28,8 +28,8 @@
 </p>
 
 <ul>
-  <li><strong>View <a href="/basics/exception-explanation">the divide-by-zero exception</a> explanation</strong></li>
-  <li><strong>View <a href="/basics/youtube-top-ten">the top 10 trending videos</a> on YouTube</strong></li>
+  <li><strong>View <%= link_to 'the divide-by-zero exception', exception_explanation_path %> explanation</strong></li>
+  <li><strong>View <%= link_to 'the top 10 trending videos', youtube_top_ten_path %> on YouTube</strong></li>
 </ul>
 
 <h3>References</h3>
@@ -46,9 +46,5 @@
     <li>http://ryandao.net/ruby-rails-screen-scraping-nikogiri-and-openuri</li>
   </ol>
 
-<h4>Menu</h4>
-<ul>
-  <li>Return to <a href="/basics">solution</a></li>
-  <li>Return to <a href="/">homepage</a></li>
-</ul>
+<%= render partial: 'basics/menu' %>
 
