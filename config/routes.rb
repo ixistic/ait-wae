@@ -9,7 +9,8 @@ Rails.application.routes.draw do
       get '/youtube-top-ten', to: 'basics#youtube_top_ten'
     end
     scope '/2' do
-      get '/', to: 'basics#index'
+      get '/', to: 'basics#quotations', as: 'quotations_show'
+      post '/new', to: 'basics#quotation_new', as: 'quotation_new'
     end
   end
 

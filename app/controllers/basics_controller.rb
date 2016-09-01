@@ -23,7 +23,6 @@ class BasicsController < ApplicationController
 
   # About to divide bt 0
   def exception
-
     # ZeroDivisionError (divided by 0):
     # app/controllers/basics_controller.rb:20:in `/'
     # app/controllers/basics_controller.rb:20:in `exception'
@@ -37,7 +36,41 @@ class BasicsController < ApplicationController
     # Rendered /Users/ixistic/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (80.0ms)
 
     @result = 1/0
+  end
+
+  def quotations
+    @quotation = Quotation.new
+    query = Quotation.all
+    if params[:q]
+      query = Quotation.search(params[:q].downcase).order(:created_at)
+    end
+    if params[:sort_by] == "date"
+      @quotations = query.order(:created_at)
+    else
+      @quotations = query.order(:category)
+    end
+  end
+
+  def quotation_new
+
+    @quotation = Quotation.new(quotation_params)
+
+    respond_to do |format|
+      if @quotation.save
+        format.html { redirect_to quotations_show_path, notice: 'Quotation was successfully created.' }
+        format.json { render quotations_show_path, status: :created }
+      else
+        format.html { render quotations_show_path }
+        format.json { render json: @quotation.errors, status: :unprocessable_entity }
+      end
+    end
 
   end
+
+  def quotation_params
+    params.require(:quotation).permit(:author_name, :category, :quote)
+  end
+
+
 
 end
