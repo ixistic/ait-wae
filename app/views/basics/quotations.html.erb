@@ -1,4 +1,12 @@
 <h3>Quotations</h3>
+Export to json file : <%= link_to 'click', quotations_json_path %><br>
+Export to xml file : <%= link_to 'click', quotations_xml_path %><br><br>
+
+Upload JSON file
+<%= form_tag quotations_show_path, multipart: true do%>
+  <%= file_field_tag :file %>
+  <%= submit_tag "import" %>
+<% end %><br><br>
 <%= form_tag(quotations_show_path, method: "get") do %>
     <%= label_tag(:q, "Search for:") %>
     <%= text_field_tag(:q) %>

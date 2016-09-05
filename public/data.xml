@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+  <array>
+    <dict>
+      <key>id</key>
+      <string>1</string>
+      <key>author_name</key>
+      <string>Ted Turner</string>
+      <key>category</key>
+      <string>1</string>
+      <key>quote</key>
+      <string>I feel like those Jewish people in Germany in 1942</string>
+      <key>created_at</key>
+      <string>2016-09-01 15:38:30 UTC</string>
+      <key>updated_at</key>
+      <string>2016-09-01 15:38:30 UTC</string>
+    </dict>
+    <dict>
+      <key>id</key>
+      <string>2</string>
+      <key>author_name</key>
+      <string>Unknown Heroine</string>
+      <key>category</key>
+      <string>2</string>
+      <key>quote</key>
+      <string>If a man speaks in the forest and there is no woman there to hear him, is he still wrong</string>
+      <key>created_at</key>
+      <string>2016-09-01 15:39:03 UTC</string>
+      <key>updated_at</key>
+      <string>2016-09-01 15:39:03 UTC</string>
+    </dict>
+    <dict>
+      <key>id</key>
+      <string>3</string>
+      <key>author_name</key>
+      <string>Unknown Heroine</string>
+      <key>category</key>
+      <string></string>
+      <key>quote</key>
+      <string>Men are like a fine wine. They all start out like grapes, and it’s our job to stomp on them and
+keep them in the dark where they will mature into something you’d want to have dinner with.</string>
+      <key>created_at</key>
+      <string>2016-09-01 15:40:31 UTC</string>
+      <key>updated_at</key>
+      <string>2016-09-01 15:40:31 UTC</string>
+    </dict>
+  </array>
+</plist>
+<respond_to?:to_text/>
+<to_text/>

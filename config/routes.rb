@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     scope '/2' do
       get '/', to: 'basics#quotations', as: 'quotations_show'
       post '/new', to: 'basics#quotation_new', as: 'quotation_new'
+      get '/json', to: 'basics#quotations_json', as: 'quotations_json'
+      get '/xml', to: 'basics#quotations_xml', as: 'quotations_xml'
     end
   end
 

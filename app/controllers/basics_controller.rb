@@ -49,6 +49,7 @@ class BasicsController < ApplicationController
     else
       @quotations = query.order(:category)
     end
+
   end
 
   def quotation_new
@@ -58,13 +59,39 @@ class BasicsController < ApplicationController
     respond_to do |format|
       if @quotation.save
         format.html { redirect_to quotations_show_path, notice: 'Quotation was successfully created.' }
-        format.json { render quotations_show_path, status: :created }
+        format.json { render json: @quotation, status: :created }
+        format.xml { render xml: @quotation, status: :created }
       else
         format.html { render quotations_show_path }
         format.json { render json: @quotation.errors, status: :unprocessable_entity }
+        format.xml { render xml: @quotation.errors, status: :unprocessable_entity }
       end
     end
 
+  end
+
+  def quotations_json
+    quotation = Quotation.all.to_json
+    send_data quotation, :type => 'application/json; header=present', :disposition => "attachment; filename=quotations.json"
+  end
+
+  def quotations_xml
+    xml = Builder::XmlMarkup.new(:indent => 2)
+    xml.instruct! :xml, :version=>'1.0'
+
+    xml.quotations do
+      Quotation.all.each do |s|
+        xml.quotation do
+          xml.id(s.id)
+          xml.author_name(s.author_name)
+          xml.category(s.category)
+          xml.quote(s.quote)
+          xml.created_at(s.created_at)
+          xml.updated_at(s.updated_at)
+        end
+      end
+    end
+    send_data xml.target!, :type => 'text/xml; header=present', :disposition => "attachment; filename=quotations.xml"
   end
 
   def quotation_params
