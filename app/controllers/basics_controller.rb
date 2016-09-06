@@ -1,3 +1,4 @@
+require 'builder'
 class BasicsController < ApplicationController
 
   def task1
@@ -39,22 +40,66 @@ class BasicsController < ApplicationController
   end
 
   def quotations
+
     @quotation = Quotation.new
     query = Quotation.all
     if params[:q]
       query = Quotation.search(params[:q].downcase).order(:created_at)
     end
-    if params[:sort_by] == "date"
-      @quotations = query.order(:created_at)
-    else
+
+    if cookies[:quotations]
+      query = query.where.not(id: JSON.parse(cookies[:quotations]))
+    end
+
+    if params[:sort_by] == "category"
       @quotations = query.order(:category)
+    else
+      @quotations = query.order(:created_at)
     end
 
   end
 
   def quotation_new
 
-    @quotation = Quotation.new(quotation_params)
+    if request.headers["Content-Type"] == 'text/xml' || request.headers["Content-Type"] == 'application/xml' || !params['url'].nil?
+      if !params['url'].nil?
+        data = Nokogiri::XML(open(params['url']))
+      else
+        data = Nokogiri::XML(request.body)
+      end
+      if !data.css('quotation').nil?
+        data.css('quotation').each do |node|
+          children = node.children
+          @quotation = Quotation.create(
+              :author_name => children.css('author_name').inner_text,
+              :category => children.css('category').inner_text,
+              :quote => children.css('quote').inner_text
+          )
+          @quotation.save
+        end
+      end
+      if !data.css('object').nil?
+        data.css('object').each do |node|
+          children = node.children
+          @quotation = Quotation.create(
+              :author_name => children.css('author_name').inner_text,
+              :category => children.css('category').inner_text,
+              :quote => children.css('quote').inner_text
+          )
+          @quotation.save
+        end
+      end
+    else
+      if params[:quotation][:category] == "New Category"
+        if params[:post][:category_name] == ""
+          params[:quotation][:category] = "Undefined"
+        else
+          params[:quotation][:category] = params[:post][:category_name]
+        end
+      end
+      @quotation = Quotation.new(quotation_params)
+    end
+
 
     respond_to do |format|
       if @quotation.save
@@ -76,8 +121,8 @@ class BasicsController < ApplicationController
   end
 
   def quotations_xml
-    xml = Builder::XmlMarkup.new(:indent => 2)
-    xml.instruct! :xml, :version=>'1.0'
+    xml = Builder::XmlMarkup.new( :indent => 2 )
+    xml.instruct! :xml, :version =>'1.0'
 
     xml.quotations do
       Quotation.all.each do |s|
@@ -92,6 +137,23 @@ class BasicsController < ApplicationController
       end
     end
     send_data xml.target!, :type => 'text/xml; header=present', :disposition => "attachment; filename=quotations.xml"
+  end
+
+  def kill_quote
+    if cookies[:quotations].nil?
+      array = []
+    else
+      array = JSON.parse(cookies[:quotations])
+    end
+    cookies[:quotations] = JSON.generate(array.push(params['quotation_id']))
+    respond_to do |format|
+      format.html { redirect_to quotations_show_path, notice: 'Quote was successfully killed.' }
+    end
+  end
+
+  def clear_cookie
+    cookies.delete :quotations
+    redirect_to quotations_show_path
   end
 
   def quotation_params

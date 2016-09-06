@@ -2,21 +2,43 @@
 Export to json file : <%= link_to 'click', quotations_json_path %><br>
 Export to xml file : <%= link_to 'click', quotations_xml_path %><br><br>
 
-Upload JSON file
-<%= form_tag quotations_show_path, multipart: true do%>
-  <%= file_field_tag :file %>
-  <%= submit_tag "import" %>
-<% end %><br><br>
+
+<%= form_tag(quotation_new_path, method: "post") do %>
+    <%= label_tag(:url, "URL for import quote") %>
+    <%= text_field_tag(:url) %>
+    <%= submit_tag("Import") %>
+<% end %><br><br><hr><br>
+
+
 <%= form_tag(quotations_show_path, method: "get") do %>
     <%= label_tag(:q, "Search for:") %>
     <%= text_field_tag(:q) %>
     <%= submit_tag("Search") %>
 <% end %>
-<ul>
-  <% for quotation in @quotations %>
-      <li><%= h quotation.author_name %>: <%= h quotation.quote %></li>
+<br>
+<%= link_to "Erase my personalization", clear_cookie_path, :method => :delete %>
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Author name</th>
+    <th>Quote</th>
+    <th>Category</th>
+    <th>Created at</th>
+    <th>Opearation</th>
+  </thead>
+  <tbody>
+  <% @quotations.each do |quotation|  %>
+    <tr>
+      <td><%= quotation.id %></td>
+      <td><%= quotation.author_name %></td>
+      <td><%= quotation.quote %></td>
+      <td><%= quotation.category %></td>
+      <td><%= quotation.created_at %></td>
+      <td><%= link_to "Delete", kill_path(:id => quotation.id, :quotation_id => quotation.id), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
 <br/>
 <% if params[:sort_by] == "date" %>
     <%= link_to "Sort by category", :action => :quotations, :sort_by => :category %>
@@ -28,7 +50,7 @@ Upload JSON file
 <%= form_for(@quotation, url: quotation_new_path, method: "post") do |f| %>
     <% if @quotation.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+          <h2><%= pluralize(@quotation.errors.count, "error") %> prohibited this book from being saved:</h2>
 
           <ul>
             <% @quotation.errors.full_messages.each do |message| %>
@@ -45,8 +67,8 @@ Upload JSON file
 
     <div class="field">
       <%= f.label :category %>
-      <%= f.collection_select(:category, Quotation.select(:category)+[Quotation.new(category: "New Category")], :id, :category) %>
-      <%= f.text_field :category, :size => 20, :maxlength => 40 %>
+      <%= f.collection_select(:category, Quotation.select(:category).distinct+[Quotation.new(category: "New Category")], :category, :category) %>
+      <%= text_field :post, :category_name %>
     </div>
 
     <div class="field">

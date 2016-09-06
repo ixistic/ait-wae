@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       post '/new', to: 'basics#quotation_new', as: 'quotation_new'
       get '/json', to: 'basics#quotations_json', as: 'quotations_json'
       get '/xml', to: 'basics#quotations_xml', as: 'quotations_xml'
+      delete '/kill/:id', to: 'basics#kill_quote', as: 'kill'
+      delete '/clear', to: 'basics#clear_cookie', as: 'clear_cookie'
     end
   end
 
