@@ -9,9 +9,12 @@
   </head>
 
   <body>
-    <%= yield %>
-    <br><br><br><br>
-    <a href="http://validator.w3.org/check?uri=referer">XHTML markup validation service</a>
+    <%= render partial: 'layouts/header' %>
+    <div class="container">
+
+      <%= yield %>
+      <a href="http://validator.w3.org/check?uri=referer">XHTML markup validation service</a>
+    </div>
   </body>
 
 </html>
