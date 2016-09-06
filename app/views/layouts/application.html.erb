@@ -10,11 +10,10 @@
 
   <body>
     <%= render partial: 'layouts/header' %>
-    <div class="container">
-
+    <div class="main container">
       <%= yield %>
-      <a href="http://validator.w3.org/check?uri=referer">XHTML markup validation service</a>
     </div>
+    <%= render partial: 'layouts/footer' %>
   </body>
 
 </html>
