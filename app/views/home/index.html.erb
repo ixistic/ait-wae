@@ -1,11 +1,25 @@
-<h1>Web08 Team's Homepage</h1>
-
-<h3>Assignment 1</h3>
-<ul>
-  <li>View <%= link_to 'solution', task1_index_path %></li>
-</ul>
-
-<h3>Assignment 2</h3>
-<ul>
-  <li>View <%= link_to 'solution', quotations_show_path %></li>
-</ul>
+<div class="row">
+  <div class="head col-md-6 offset-md-3 text-xs-center">
+    <h1>Web08 Team's Homepage</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3 offset-md-3 text-xs-center">
+    <div onclick="location.href='<%= task1_index_path %>';" class="card card-block card-assignment">
+      <h4 class="card-title">Basic : PS1</h4>
+      <p class="card-text"></p>
+      <a href="<%= task1_index_path %>" class="card-link">
+        <p class="card-text">Click to solution</p>
+      </a>
+    </div>
+  </div>
+  <div class="col-md-3 text-xs-center">
+    <div onclick="location.href='<%= quotations_show_path %>';" class="card card-block card-assignment">
+      <h4 class="card-title">Basic : PS2</h4>
+      <p class="card-text"></p>
+      <a href="<%= quotations_show_path %>" class="card-link">
+        <p class="card-text">Click to solution</p>
+      </a>
+    </div>
+  </div>
+</div>

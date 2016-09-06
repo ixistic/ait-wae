@@ -1,12 +1,16 @@
-<h1>YouTube's Top 10 Trending Videos</h1>
-
-<ol>
-  <% @result.each do |video| %>
-      <li>
-        <a href="<%= video[1] %>"><img src="<%= video[2] %>" alt="Image is not loading"></a>
-        <a href="<%= video[1] %>"><%= video[0] %></a>
-      </li>
-  <% end %>
-</ol>
-
-<%= render partial: 'basics/menu' %>
+<div class="row head">
+  <h1>YouTube's Top 10 Trending Videos</h1>
+</div>
+<div class="row">
+  <ol>
+    <% @result.each do |video| %>
+        <li>
+          <a href="<%= video[1] %>"><img src="<%= video[2] %>" alt="Image is not loading"></a>
+          <a href="<%= video[1] %>"><%= video[0] %></a>
+        </li>
+    <% end %>
+  </ol>
+</div>
+<div class="row" style="padding-top: 20px">
+  <%= render partial: 'basics/menu' %>
+</div>

@@ -1,12 +1,17 @@
-<h1>Divide-By-Zero Exception</h1>
-<p>How a divide-by-zero exception is created:</p>
-<ol>
-  <li>1/0 is assigned to @result inside a controller (basics_controller.rb).</li>
-  <li>@result is then displayed in a view (exception.html.erb).</li>
-  <li>A link that points to exception.html.erb is placed on the homepage.
-    The link will trigger the divide-by-zero exception when clicked.</li>
-  <li>View <%= link_to 'a divide-by-zero exception', exception_path %>.</li>
-  <li>Based on our understanding of the assignment task, the exception doesn't need to be caught right now.</li>
-</ol>
-
-<%= render partial: 'basics/menu' %>
+<div class="row head">
+  <h1>Divide-By-Zero Exception</h1>
+</div>
+<div class="row">
+  <p>How a divide-by-zero exception is created:</p>
+  <ol>
+    <li>1/0 is assigned to @result inside a controller (basics_controller.rb).</li>
+    <li>@result is then displayed in a view (exception.html.erb).</li>
+    <li>A link that points to exception.html.erb is placed on the homepage.
+      The link will trigger the divide-by-zero exception when clicked.</li>
+    <li>View <%= link_to 'a divide-by-zero exception', exception_path %>.</li>
+    <li>Based on our understanding of the assignment task, the exception doesn't need to be caught right now.</li>
+  </ol>
+</div>
+<div class="row" style="padding-top: 20px">
+  <%= render partial: 'basics/menu' %>
+</div>

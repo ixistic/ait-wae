@@ -67,7 +67,7 @@ Export to xml file : <%= link_to 'click', quotations_xml_path %><br><br>
 
     <div class="field">
       <%= f.label :category %>
-      <%= f.collection_select(:category, Quotation.select(:category).distinct+[Quotation.new(category: "New Category")], :category, :category) %>
+      <%= f.collection_select(:category, [Quotation.new(category: "New Category")]+Quotation.select(:category).distinct, :category, :category) %>
       <%= text_field :post, :category_name %>
     </div>
 
