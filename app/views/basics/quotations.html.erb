@@ -1,41 +1,61 @@
-<h3>Quotations</h3>
-Export to json file : <%= link_to 'click', quotations_json_path %><br>
-Export to xml file : <%= link_to 'click', quotations_xml_path %><br><br>
+<div class="row">
+  <div class="col-md-12">
+    <h3>Quotations
+      <a href="<%= quotations_json_path %>" style="padding-left: 100px"><button type="button" class="btn btn-danger pull-xs-right">Export to JSON</button></a>
+      <a href="<%= quotations_xml_path %>"><button type="button" class="btn btn-primary pull-xs-right">Export to XML</button></a>
+    </h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12" style="padding-top: 20px">
+    <%= form_tag(quotation_new_path, method: "post", class: 'form-inline') do %>
+      <div class="form-group">
+        <%= label_tag :url, "URL for import quote : " %>
+        <%= text_field_tag :url, nil, size: 50, class: 'form-control' %>
+      </div>
+      <%= submit_tag "Import", class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12" style="padding-top: 20px;padding-bottom: 20px">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">New quotation</button>
+  </div>
+</div>
 
-
-<%= form_tag(quotation_new_path, method: "post") do %>
-    <%= label_tag(:url, "URL for import quote") %>
-    <%= text_field_tag(:url) %>
-    <%= submit_tag("Import") %>
-<% end %><br><br><hr><br>
-
-
-<%= form_tag(quotations_show_path, method: "get") do %>
-    <%= label_tag(:q, "Search for:") %>
-    <%= text_field_tag(:q) %>
-    <%= submit_tag("Search") %>
-<% end %>
+<hr>
+<div class="row">
+  <div class="col-md-12" style="padding-top: 20px">
+    <%= form_tag(quotations_show_path, method: "get", class: 'form-inline') do %>
+      <div class="form-group">
+        <%= label_tag :q, "Search for : " %>
+        <%= text_field_tag :q , nil, size: 50, class: 'form-control'%>
+      </div>
+      <%= submit_tag "Search", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
 <br>
 <%= link_to "Erase my personalization", clear_cookie_path, :method => :delete %>
 <table>
   <thead>
-    <th>ID</th>
-    <th>Author name</th>
-    <th>Quote</th>
-    <th>Category</th>
-    <th>Created at</th>
-    <th>Opearation</th>
+  <th>ID</th>
+  <th>Author name</th>
+  <th>Quote</th>
+  <th>Category</th>
+  <th>Created at</th>
+  <th>Opearation</th>
   </thead>
   <tbody>
   <% @quotations.each do |quotation|  %>
-    <tr>
-      <td><%= quotation.id %></td>
-      <td><%= quotation.author_name %></td>
-      <td><%= quotation.quote %></td>
-      <td><%= quotation.category %></td>
-      <td><%= quotation.created_at %></td>
-      <td><%= link_to "Delete", kill_path(:id => quotation.id, :quotation_id => quotation.id), :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+      <tr>
+        <td><%= quotation.id %></td>
+        <td><%= quotation.author_name %></td>
+        <td><%= quotation.quote %></td>
+        <td><%= quotation.category %></td>
+        <td><%= quotation.created_at %></td>
+        <td><%= link_to "Delete", kill_path(:id => quotation.id, :quotation_id => quotation.id), :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
   <% end %>
   </tbody>
 </table>
@@ -45,38 +65,52 @@ Export to xml file : <%= link_to 'click', quotations_xml_path %><br><br>
 <% else %>
     <%= link_to "Sort by date", :action => :quotations, :sort_by => :date %>
 <% end %>
-<hr/>
-<h3>New quotation</h3>
-<%= form_for(@quotation, url: quotation_new_path, method: "post") do |f| %>
-    <% if @quotation.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@quotation.errors.count, "error") %> prohibited this book from being saved:</h2>
 
-          <ul>
-            <% @quotation.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">New quotation</h4>
+      </div>
+      <%= form_for(@quotation, url: quotation_new_path, method: "post") do |f| %>
+        <div class="modal-body">
+          <% if @quotation.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@quotation.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+                <ul>
+                  <% @quotation.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+
+          <div class="form-group">
+            <%= f.label :author_name %>
+            <%= f.text_field :author_name, class:'form-control', placeholder:'Enter name' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :category %>
+            <%= f.collection_select(:category, [Quotation.new(category: "New Category")]+Quotation.select(:category).distinct, :category, :category) %>
+            <%= text_field :post, :category_name, class:'form-control', placeholder:'Enter category' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :quote %>
+            <%= f.text_area :quote, class:'form-control', placeholder:'Enter quote' %>
+          </div>
         </div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :author_name %>
-      <%= f.text_field :author_name, :size => 20, :maxlength => 40 %>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.submit 'Create', class:'btn btn-primary' %>
+        </div>
+      <% end %>
     </div>
-
-    <div class="field">
-      <%= f.label :category %>
-      <%= f.collection_select(:category, [Quotation.new(category: "New Category")]+Quotation.select(:category).distinct, :category, :category) %>
-      <%= text_field :post, :category_name %>
-    </div>
-
-    <div class="field">
-      <%= f.label :quote %>
-      <%= f.text_area :quote, :rows => 2, :cols => 40, :maxlength => 500 %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit 'Create' %>
-    </div>
-<% end %>
+  </div>
+</div>
