@@ -9,12 +9,16 @@ Rails.application.routes.draw do
       get '/youtube-top-ten', to: 'basics#youtube_top_ten'
     end
     scope '/2' do
-      get '/', to: 'basics#quotations', as: 'quotations_show'
-      post '/new', to: 'basics#quotation_new', as: 'quotation_new'
-      get '/json', to: 'basics#quotations_json', as: 'quotations_json'
-      get '/xml', to: 'basics#quotations_xml', as: 'quotations_xml'
-      delete '/kill/:id', to: 'basics#kill_quote', as: 'kill'
-      delete '/clear', to: 'basics#clear_cookie', as: 'clear_cookie'
+      get '/', to: 'basics#task2', as: 'task2_index'
+      get '/stocks-i-like', to: 'basics#stocks_i_like'
+      scope 'quotations' do
+        get '/', to: 'basics#quotations', as: 'quotations_show'
+        post '/new', to: 'basics#quotation_new', as: 'quotation_new'
+        get '/json', to: 'basics#quotations_json', as: 'quotations_json'
+        get '/xml', to: 'basics#quotations_xml', as: 'quotations_xml'
+        delete '/kill/:id', to: 'basics#kill_quote', as: 'kill'
+        delete '/clear', to: 'basics#clear_cookie', as: 'clear_cookie'
+      end
     end
   end
 

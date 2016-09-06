@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <th>symbol</th>
+    <th>total_shares</th>
+    <th>total_prices</th>
+  </thead>
+  <tbody>
+  <% @result.each do |x| %>
+    <tr>
+      <td><%= x['symbol'] %></td>
+      <td><%= x['total_shares'] %></td>
+      <td><%= x['total_prices'] %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<%= render partial: 'basics/menu_task2' %>

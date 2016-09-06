@@ -5,6 +5,10 @@ class BasicsController < ApplicationController
 
   end
 
+  def task2
+
+  end
+
   def youtube_top_ten
     @doc = Nokogiri::HTML(open('https://www.youtube.com/feed/trending'), nil, Encoding::UTF_8.to_s)
               .css('li.expanded-shelf-content-item-wrapper')
@@ -37,6 +41,11 @@ class BasicsController < ApplicationController
     # Rendered /Users/ixistic/.rvm/gems/ruby-2.3.1@rails5.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (80.0ms)
 
     @result = 1/0
+  end
+
+  def stocks_i_like
+    sql = "with m as (select my_stocks.symbol, sum(my_stocks.n_shares) total_shares, sum(stock_prices.price) total_prices from my_stocks join stock_prices on my_stocks.symbol=stock_prices.symbol where stock_prices.price > 322 group by my_stocks.symbol) select * from m union all select 'Total', sum(my_stocks.n_shares), sum(stock_prices.price) from m, my_stocks, stock_prices;"
+    @result = ActiveRecord::Base.connection.execute(sql)
   end
 
   def quotations

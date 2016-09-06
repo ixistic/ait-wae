@@ -1,0 +1,460 @@
+#-------------- Solutions 7-13
+
+#-----------------------
+#  Answer to PS2 #7
+#-----------------------
+
+#
+##### Snippet 1: As given in PS2 #7
+#
+
+create table my_stocks (
+    symbol varchar(20) not null,
+    n_shares integer not null,
+    date_acquired date not null
+);
+
+#
+##### Snippet 2
+#
+
+copy my_stocks from '/Users/ixistic/Desktop/stocks.txt';
+select * from my_stocks;
+
+#
+##### Table 1: my_stocks generated with Snippet 2
+#
+#   symbol | n_shares | date_acquired
+#  --------+----------+---------------
+#   GOOGL  |      230 | 2016-09-01
+#   AAPL   |      240 | 2016-08-20
+#   YHOO   |      150 | 2015-05-28
+#   BIDU   |      500 | 2014-01-19
+#   TWTR   |      180 | 2013-05-16
+#  (5 rows)
+#
+
+#-----------------------
+#  Answer to PS2 #8 (a)
+#-----------------------
+
+#
+##### Snippet 3: As given in PS2 #8
+#
+
+create table stock_prices (
+   symbol varchar(20) not null,
+   quote_date date not null,
+   price money
+);
+
+#
+##### Snippet 4
+#
+
+insert into stock_prices select symbol, current_date as quote_date, 31.415 as price from my_stocks where symbol = 'GOOGL';
+
+#
+##### Snippet 5
+#
+
+insert into stock_prices select symbol, current_date as quote_date, 50.67 as price from my_stocks where symbol = 'AAPL';
+
+#
+##### Snippet 6
+#
+
+insert into stock_prices select symbol, current_date as quote_date, 10.447 as price from my_stocks where symbol = 'YHOO';
+
+#
+##### Snippet 7
+#
+
+insert into stock_prices select symbol, current_date as quote_date, 25.302 as price from my_stocks where symbol = 'BIDU';
+
+#
+##### Snippet 8
+#
+
+insert into stock_prices select symbol, current_date as quote_date, 45.200 as price from my_stocks where symbol = 'TWTR';
+
+#
+##### Table 2: stock_prices generated with Snippets 4-8
+#
+#   symbol | quote_date |  price
+#  --------+------------+---------
+#   GOOGL  | 2016-09-03 | ฿ 31.42
+#   YHOO   | 2016-09-03 | ฿ 10.45
+#   AAPL   | 2016-09-03 | ฿ 50.67
+#   BIDU   | 2016-09-03 | ฿ 25.30
+#   TWTR   | 2016-09-03 | ฿ 45.20
+#  (5 rows)
+#
+
+#-----------------------
+#  Answer to PS2 #8 (b)
+#-----------------------
+
+#
+##### Snippet 9: As given in PS2 #8
+#
+
+create table newly_acquired_stocks (
+    symbol varchar(20) not null,
+    n_shares integer not null,
+    date_acquired date not null
+);
+
+#
+##### Snippet 10
+#
+
+insert into newly_acquired_stocks select my_stocks.symbol, my_stocks.n_shares, my_stocks.date_acquired from my_stocks where my_stocks.n_shares > 200;
+
+#
+##### Table 3: newly_acquired_stocks generated with Snippet 10
+#
+#   symbol | n_shares | date_acquired
+#  --------+----------+---------------
+#   GOOGL  |      230 | 2016-09-01
+#   AAPL   |      240 | 2016-08-20
+#   BIDU   |      500 | 2014-01-19
+#  (3 rows)
+#
+
+#-----------------------
+#  Answer to PS2 #9
+#-----------------------
+
+#
+##### Snippet 11
+#
+
+select my_stocks.symbol, my_stocks.n_shares as number_of_shares, stock_prices.price as price_per_share, my_stocks.n_shares * stock_prices.price as current_value from my_stocks join stock_prices on my_stocks.symbol=stock_prices.symbol;
+
+#
+##### Table 4: Generated with Snippet 11
+#
+#   symbol | number_of_shares | price_per_share | current_value
+#  --------+------------------+-----------------+---------------
+#   GOOGL  |              230 |         ฿ 31.42 |    ฿ 7,226.60
+#   AAPL   |              240 |         ฿ 50.67 |   ฿ 12,160.80
+#   YHOO   |              150 |         ฿ 10.45 |    ฿ 1,567.50
+#   BIDU   |              500 |         ฿ 25.30 |   ฿ 12,650.00
+#   TWTR   |              180 |         ฿ 45.20 |    ฿ 8,136.00
+#  (5 rows)
+#
+
+#-----------------------
+#  Answer to PS2 #10
+#-----------------------
+
+#
+##### Snippet 12: Inserting an empty string value into the symbol column
+#
+
+insert into my_stocks (symbol, n_shares, date_acquired) values ('',340, '2016-06-24');
+
+#
+##### Table 5: Generated with Snippet 12 & displayed the empty value under TWTR
+#
+#   symbol | n_shares | date_acquired
+#  --------+----------+---------------
+#   GOOGL  |      230 | 2016-09-01
+#   AAPL   |      240 | 2016-08-20
+#   YHOO   |      150 | 2015-05-28
+#   BIDU   |      500 | 2014-01-19
+#   TWTR   |      180 | 2013-05-16
+#          |      340 | 2016-06-24
+#  (6 rows)
+#
+
+#
+### Snippet 13: A re-run of Snippet 11
+#
+
+select my_stocks.symbol, my_stocks.n_shares as number_of_shares, stock_prices.price as price_per_share, my_stocks.n_shares * stock_prices.price as current_value from my_stocks join stock_prices on my_stocks.symbol=stock_prices.symbol;
+
+#
+##### Table 5: Generated with Snippet 13 (this table stays the same as Table 4)
+#
+#   symbol | number_of_shares | price_per_share | current_value
+#  --------+------------------+-----------------+---------------
+#   GOOGL  |              230 |         ฿ 31.42 |    ฿ 7,226.60
+#   AAPL   |              240 |         ฿ 50.67 |   ฿ 12,160.80
+#   YHOO   |              150 |         ฿ 10.45 |    ฿ 1,567.50
+#   BIDU   |              500 |         ฿ 25.30 |   ฿ 12,650.00
+#   TWTR   |              180 |         ฿ 45.20 |    ฿ 8,136.00
+#  (5 rows)
+#
+
+#
+### Snippet 14: Note that FULL OUTER JOIN is used instead of (now discarded) OUTER JOIN
+#
+
+select my_stocks.symbol, my_stocks.n_shares as number_of_shares, stock_prices.price as price_per_share, my_stocks.n_shares * stock_prices.price as current_value from my_stocks full outer join stock_prices on my_stocks.symbol=stock_prices.symbol;
+
+#
+##### Table 6: Generated with Snippet 14
+#
+#   symbol | number_of_shares | price_per_share | current_value
+#  --------+------------------+-----------------+---------------
+#   GOOGL  |              230 |         ฿ 31.42 |    ฿ 7,226.60
+#   AAPL   |              240 |         ฿ 50.67 |   ฿ 12,160.80
+#   YHOO   |              150 |         ฿ 10.45 |    ฿ 1,567.50
+#   BIDU   |              500 |         ฿ 25.30 |   ฿ 12,650.00
+#   TWTR   |              180 |         ฿ 45.20 |    ฿ 8,136.00
+#          |              340 |                 |
+#  (6 rows)
+#
+
+#-----------------------
+#  Answer to PS2 #11 (a)
+#-----------------------
+
+#
+### Snippet 15: Creating stock_value_by_ascii function in PL/pgSQL
+#
+
+create or replace function stock_value_by_ascii(new_symbol text)
+    returns integer as $$
+    declare
+        new_stock_value integer;
+        new_symbol_in_array text[];
+    begin
+        new_stock_value := 0;
+        new_symbol_in_array := string_to_array(new_symbol, NULL);
+
+        for x in array_lower(new_symbol_in_array, 1)..array_upper(new_symbol_in_array, 1) loop
+            new_stock_value := new_stock_value + ascii(new_symbol_in_array[x]);
+        end loop;
+
+        return new_stock_value;
+
+    end;
+$$ language plpgsql;
+
+#
+### Snippet 16: Testing the function created in Snippet 15 using 'IBM'
+#
+
+select * from stock_value_by_ascii('IBM');
+
+#
+##### Table 7: Generated with Snippet 16
+#
+#   stock_value_by_ascii
+#  ----------------------
+#                    216
+#  (1 row)
+#
+
+#
+### Snippet 17: Testing the function created in Snippet 15 using 'ibm'
+#
+
+select * from stock_value_by_ascii('ibm');
+
+#
+##### Table 8: Generated with Snippet 17
+#
+#   stock_value_by_ascii
+#  ----------------------
+#                    312
+#  (1 row)
+#
+
+#-----------------------
+#  Answer to PS2 #11 (b) Updating stock_prices using the function created in Snippet 15
+#-----------------------
+
+#
+### Snippet 18:
+#
+
+update stock_prices set price = (select stock_value_by_ascii('GOOGL')) where symbol = 'GOOGL';
+
+#
+### Snippet 19:
+#
+
+update stock_prices set price = (select stock_value_by_ascii('YHOO')) where symbol = 'YHOO';
+
+#
+### Snippet 20:
+#
+
+update stock_prices set price = (select stock_value_by_ascii('AAPL')) where symbol = 'AAPL';
+
+#
+### Snippet 21:
+#
+
+update stock_prices set price = (select stock_value_by_ascii('BIDU')) where symbol = 'BIDU';
+
+#
+### Snippet 22:
+#
+
+update stock_prices set price = (select stock_value_by_ascii('TWTR')) where symbol = 'TWTR';
+
+#
+##### Table 9: Generated with Snippets 18-22 & an update of Table 2
+#
+#   symbol | quote_date |  price
+#  --------+------------+----------
+#   GOOGL  | 2016-09-03 | ฿ 376.00
+#   YHOO   | 2016-09-03 | ฿ 319.00
+#   AAPL   | 2016-09-03 | ฿ 286.00
+#   BIDU   | 2016-09-03 | ฿ 292.00
+#   TWTR   | 2016-09-03 | ฿ 337.00
+#  (5 rows)
+#
+
+#-----------------------
+#  Answer to PS2 #11 (c)
+#-----------------------
+
+#
+### Snippet 23: Creating portfolio_value() based on Tables 1 and 2
+#
+
+CREATE OR REPLACE FUNCTION public.portfolio_value()
+    RETURNS TABLE(all_symbol character varying, total_stock money)
+    LANGUAGE plpgsql
+    AS $function$
+
+    declare
+        table_my_stock_prices cursor for
+            select my_stocks.symbol as new_symbol,
+            my_stocks.n_shares * stock_prices.price
+            as total_stock
+            from my_stocks inner join stock_prices
+            on my_stocks.symbol=stock_prices.symbol;
+        table_record text;
+
+    begin
+        for table_record in table_my_stock_prices loop
+            return query select table_record.new_symbol, table_record.total_stock;
+        end loop;
+        return;
+    end;
+$function$;
+
+#
+### Snippet 24: Calling portfolio_value() to get Table 10
+#
+
+select portfolio_value();
+
+#
+##### Table 10: Generated with Snippet 24
+#
+#     portfolio_value
+#  -----------------------
+#   (GOOGL,"฿ 86,480.00")
+#   (AAPL,"฿ 68,640.00")
+#   (YHOO,"฿ 47,850.00")
+#   (BIDU,"฿ 146,000.00")
+#   (TWTR,"฿ 60,660.00")
+#  (5 rows)
+#
+
+#-----------------------
+#  Answer to PS2 #12 (a)
+#-----------------------
+
+#
+### Snippet 25: Creating the average price using Table 2
+#
+
+select to_char(avg (price::numeric),'99999999999999999D99') as average_price from stock_prices;
+
+#
+##### Table 11: Generated with Snippet 25
+#
+#       average_price
+#  -----------------------
+#                  322.00
+#  (1 row)
+#
+
+#-----------------------
+#  Answer to PS2 #12 (b) Double the price using Table 2
+#-----------------------
+
+#
+### Snippet 26: To be able to double the price in Table 2, the 'money' datatype of the price column
+###             must be converted into the integer datatype
+#
+
+alter table stock_prices alter column price type numeric;
+alter table stock_prices alter column price type integer;
+
+#
+### Snippet 27: Run to double the price column for those values greater than the average price
+###             shown in Table 11
+#
+
+select symbol, quote_date as current_date, sum(stock_prices.price * stock_prices.price) as double_price from stock_prices where stock_prices.price > 322 group by stock_prices.symbol, stock_prices.quote_date;
+
+#
+##### Table 12: Generated with Snippet 27
+#
+#   symbol | current_date | double_price
+#  --------+--------------+--------------
+#   TWTR   | 2016-09-03   |       113569
+#   GOOGL  | 2016-09-03   |       141376
+#  (2 rows)
+#
+
+
+#-----------------------
+#  Answer to PS2 #12 (c) Genering total shares and total prices using Table 4
+#-----------------------
+
+#
+### Snippet 28: Run to generate the 'total_shares' and 'total_prices' columns from
+###             the values in the 'number_of_shares' and 'price_per_share' columns
+###             as in Table 4
+#
+
+with m as (select my_stocks.symbol, sum(my_stocks.n_shares) total_shares, sum(stock_prices.price) total_prices from my_stocks join stock_prices on my_stocks.symbol=stock_prices.symbol group by my_stocks.symbol) select * from m union all select 'Total', sum(my_stocks.n_shares), sum(stock_prices.price) from m, my_stocks, stock_prices;
+
+#
+##### Table 13: Generated with Snippet 28
+#
+#   symbol | total_shares | total_prices
+#  --------+--------------+--------------
+#   YHOO   |          150 |          319
+#   GOOGL  |          230 |          376
+#   AAPL   |          240 |          286
+#   TWTR   |          180 |          337
+#   BIDU   |          500 |          292
+#   Total  |        41000 |        48300
+#  (6 rows)
+#
+
+
+#-----------------------
+#  Answer to PS2 #12 (d) Displaying total shares and total prices (of the winners) using Table 4
+#-----------------------
+
+#
+### Snippet 29: Run to generate the 'total_shares' and 'total_prices' columns from
+###             the values in the 'number_of_shares' and 'price_per_share' columns
+###             as in Table 4 but only for the winner stocks as in Table 12
+#
+
+with m as (select my_stocks.symbol, sum(my_stocks.n_shares) total_shares, sum(stock_prices.price) total_prices from my_stocks join stock_prices on my_stocks.symbol=stock_prices.symbol where stock_prices.price > 322 group by my_stocks.symbol) select * from m union all select 'Total', sum(my_stocks.n_shares), sum(stock_prices.price) from m, my_stocks, stock_prices;
+
+#
+##### Table 14: Generated with Snippet 29
+#
+#   symbol | total_shares | total_prices
+#  --------+--------------+--------------
+#   GOOGL  |          230 |          376
+#   TWTR   |          180 |          337
+#   Total  |        16400 |        19320
+#  (3 rows)
+#
