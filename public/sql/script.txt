@@ -18,7 +18,7 @@ create table my_stocks (
 ##### Snippet 2
 #
 
-copy my_stocks from '/public/sql/stocks.txt';
+copy my_stocks from '/var/www/web16-08/public/sql/stocks.txt';
 select * from my_stocks;
 
 #

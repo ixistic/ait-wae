@@ -1,26 +1,192 @@
-<div class="row head">
+<div class="row">
   <h1>Assignment 2 Solution</h1>
 </div>
-<div class="row">
-  <h3>What We Did</h3>
-  <p>
-    ...
-  </p>
-
-</div>
-<div class="row">
+<div class="row" style="padding-top: 20px;padding-bottom: 20px">
   <ul>
     <li><strong>View <%= link_to 'quotations', quotations_show_path %></strong></li>
     <li><strong>View <%= link_to 'scripts', '/sql/script.txt' %></strong></li>
     <li><strong>View <%= link_to 'stocks-i-like', stocks_i_like_path %></strong></li>
   </ul>
 </div>
-<div class="row" style="padding-top: 20px">
-  <h3>References</h3>
-  <ol>
-    <li>https://...</li>
-  </ol>
+<div class="row">
+  <h3>How We Did It and Credits</h3>
+  <p>
+    When we were completing this assignment, we relied a lot on the online resources. As we were
+    testing the code in the local machines, we had gathered a list of resources that we need to
+    acknowledge here to comply with the honesty policy. The following are our credits to the
+    resources that we break down according to each task in the assignment that goes along with each
+    brief explanation on how we used the resources.
+  </p>
+
+  <h5>#7</h5>
+
+  <p>
+    With (1) and (2), we managed to let the code copy (or import) the data from the file that we place
+    in the public directory of the rails framework after we customized the file paths in the local
+    machines.
+  </p>
+
+  <ul>
+    <li>(1) https://www.postgresql.org/docs/9.4/static/sql­copy.html</li>
+    <li>(2) http://stackoverflow.com/questions/5233321/how­to­load­data­from­a­text­file­in­a­postgresql-database</li>
+  </ul>
+
+  <h5>#8</h5>
+
+  <p>
+    Using (3), (4), (5), (6), (7), (8), and (9), we had the code copy the data from one table to another.
+    Unlike in #7, we used the ‘insert’ command to copy a row of data from one table to another as
+    shown in (5). After several tryouts, we found out that there is no sysdate on PostGreSql but
+    current_date as pointed by (8).
+  </p>
+
+  <ul>
+    <li>(3) https://www.postgresql.org/docs/9.4/static/tutorial­table.html</li>
+    <li>(4) https://www.postgresql.org/docs/9.1/static/datatype­money.html</li>
+    <li>(5) http://www.justskins.com/forums/copy­row­from­table­101708.html</li>
+    <li>(6) http://postgresql.nabble.com/Copying­data­from­one­table­to­another­how­to­specify­fields-td3415576.html</li>
+    <li>(7) https://www.postgresql.org/docs/8.2/static/sql­insert.html</li>
+    <li>(8) http://stackoverflow.com/questions/16960432/what­is­postgresql­equivalent­of­sysdate­from-oracle</li>
+    <li>(9) https://www.postgresql.org/docs/8.1/static/queries­limit.html</li>
+  </ul>
+
+  <h5>#9</h5>
+
+  <p>
+    This task is quite simple in general. But as we were unfamiliar with PostGreSql, we studied (10),
+    (11), (12), and (13) just to make sure we were on the right track.
+  </p>
+
+  <ul>
+    <li>(10) http://stackoverflow.com/questions/1645607/postgres­column­alias­problem</li>
+    <li>(11) https://www.postgresql.org/docs/9.3/static/queries­table­expressions.html</li>
+    <li>(12) http://www.tutorialspoint.com/postgresql/postgresql_alias_syntax.htm</li>
+    <li>(13) http://stackoverflow.com/questions/18966747/postgresql­multiplication­of­columns</li>
+  </ul>
+
+  <h5>#10</h5>
+
+  <p>
+    Here we found out that PostGreSql version 9.5.x does not use OUTER JOIN anymore but opts for
+    FULL OUTER JOIN. Using (14) and (15), we managed to get it done.
+  </p>
+
+  <ul>
+    <li>(14) http://stackoverflow.com/questions/1311765/cant­enter­date­into­postgres­field­with-
+  datatype­timestamp</li>
+    <li>(15) https://www.postgresql.org/docs/9.3/static/queries­table­expressions.html</li>
+  </ul>
+
+  <h5>#11 (a)</h5>
+
+  <p>
+  Working with ASCII character was quite a challenge for us as string_to_array() did not generate a
+  separate elements for the loop. Finally, we found out (30), which is actually a description of the
+  function in PostGreSQL version 9.1. By adding NULL into string_to_array(), we solved the
+  problem that had baffled us for two days. With (16), (17), (18), (19), (20), (21), (22), (23), (24),
+  (25), (26), (27), (28), (29), and (30), we managed to construct the code of the procedure.
+  </p>
+
+  <ul>
+    <li>(16) https://cis.ait.asia/course_offerings/440/lecture_notes/1158
+    <li>(17) https://www.postgresql.org/docs/9.5/static/plpgsql­structure.html
+    <li>(18) https://www.youtube.com/watch?v=bLi4zhMey3Q
+    <li>(19) htps://wwtw.postgresql.org/docs/9.2/static/functions­string.html
+    <li>(20) http://stackoverflow.com/questions/766657/how­do­you­use­variables­in­a­simple­postgresql-script
+    <li>(21) https://www.postgresql.org/message-id/162867791003290927y3ca44051p80e697bc6b19de29@mail.gmail.com
+    <li>(22) http://stackoverflow.com/questions/9860795/how­to­edit­postgresql­stored­procedure
+    <li>(23) http://stackoverflow.com/questions/22646429/replacing­characters­in­string­during­loop­in-plpgsql
+    <li>(24) http://www.tutorialspoint.com/postgresql/postgresql_sum_function.htm
+    <li>(25) http://www.postgresonline.com/journal/archives/58­Quick­Guide­to­writing­PLPGSQL-Functions­Part­1.html
+    <li>(26) http://dba.stackexchange.com/questions/59529/looping­through­string­adding­all­numbers­e-g­123­123­demo­with­working
+    <li>(27) https://www.postgresql.org/docs/9.1/static/functions­array.html
+    <li>(28) http://algoviz.org/OpenDSA/Books/OpenDSA/html/HashFuncExamp.html
+    <li>(29) https://www.periscopedata.com/blog/how­to­format­numbers­as­currency­in­postgres­mysql-and­redshift.html
+    <li>(30) https://www.postgresql.org/docs/9.1/static/functions­array.html
+  </ul>
+
+  <h5>#11 (b)</h5>
+
+  <p>
+  As we managed to run #11 (a), we used (31) and (32) to solve #11 (b) with ease.
+  </p>
+
+  <ul>
+    <li>(31) http://www.tutorialspoint.com/postgresql/postgresql_update_query.htm
+    <li>(32) https://www.postgresql.org/docs/9.5/static/sql­update.html
+  </ul>
+
+  <h5>#11 (c)</h5>
+
+  <p>
+  The challenge here was figuring out the procedure to return a table. After we got some information
+  from (33), (34), (35), (36), (37), (38), (39), (40), (41), and (42), we managed to get the procedure
+  to return the table we wanted.
+  </p>
+
+  <ul>
+    <li>(33) https://www.postgresql.org/docs/9.2/static/plpgsql­cursors.html</li>
+    <li>(34) http://stackoverflow.com/questions/22339628/cursor­based­records­in­postgresql</li>
+    <li>(35) http://www.postgresqltutorial.com/plpgsql­cursor/</li>
+    <li>(36) http://stackoverflow.com/questions/15266345/loop­on­tables­with­pl­pgsql­in­postgres­9­0</li>
+    <li>(37) http://www.postgresqltutorial.com/plpgsql­function­returns­a­table/</li>
+    <li>(38) http://stackoverflow.com/questions/24618672/function­to­loop­through­and­select­data­from-multiple­tables</li>
+    <li>(39) https://www.youtube.com/watch?v=TtFBiKUvIhE</li>
+    <li>(40) http://stackoverflow.com/questions/8918755/postgresql­function­with­a­loop</li>
+    <li>(41) http://www.postgresonline.com/journal/archives/76­Quick­Guide­to­writing­PLPGSQL-Functions­Part­2.html</li>
+    <li>(42) http://stackoverflow.com/questions/28005863/fetching­rows­from­a­cursor­postgresql</li>
+  </ul>
+
+  <h5>#12 (a)</h5>
+
+  <p>
+  The challenge here was actually figuring out what the questions in the task are. Using (43), (44),
+  and (45), we managed to get the average result.
+  </p>
+
+  <ul>
+    <li>(43) http://www.w3resource.com/PostgreSQL/postgresql­avg­function.php</li>
+    <li>(44) http://stackoverflow.com/questions/34390708/average­value­for­money­datatype</li>
+    <li>(45) http://www.postgresqltutorial.com/postgresql­avg­function/</li>
+  </ul>
+
+  <h5>#12 (b)</h5>
+
+  <p>
+  Like in #12 (a), once we understand the question, answering it becomes a little easier. Guided by
+  </p>
+
+  <ul>
+    <li>(47) and (48), we tested the code smoothly.</li>
+    <li>(47) http://stackoverflow.com/questions/7162903/alter­table­to­change­column­data­type</li>
+    <li>(48) https://www.postgresql.org/docs/8.1/static/explicit­joins.html</li>
+  </ul>
+
+  <h5>#12 (c)</h5>
+
+  <p>
+  As #12 (a) – (b) became clear to us, we used (49) and (50) to answer this task at ease.
+  </p>
+
+  <ul>
+    <li>(49) http://stackoverflow.com/questions/13021623/how­to­do­a­sum­across­two­unrelated­tables</li>
+    <li>(50) http://stackoverflow.com/questions/13839878/postgresql­making­first­row­show­as­total­of-other­rows</li>
+  </ul>
+
+  <h5>#13</h5>
+
+  <p>
+  The challenge here was to pull the database table into the rails framework by skipping the rails
+  model altogether. Using (51) and (52), we managed to get rails to display the table.
+  </p>
+
+  <ul>
+    <li>(51) http://stackoverflow.com/questions/14824453/rails­raw­sql­example</li>
+    <li>(52) http://l.facebook.com/l.php?u=http%3A%2F%2Fstackoverflow.com%2Fquestions%2F16804715%2Frails­link­to­file­in-public­folder&h=CAQFWBLQr</li>
+  </ul>
+
 </div>
+
 
 
 
