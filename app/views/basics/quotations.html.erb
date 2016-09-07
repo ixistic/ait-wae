@@ -36,35 +36,44 @@
   </div>
 </div>
 <br>
-<%= link_to "Erase my personalization", clear_cookie_path, :method => :delete %>
-<table>
-  <thead>
-  <th>ID</th>
-  <th>Author name</th>
-  <th>Quote</th>
-  <th>Category</th>
-  <th>Created at</th>
-  <th>Opearation</th>
-  </thead>
-  <tbody>
-  <% @quotations.each do |quotation|  %>
-      <tr>
-        <td><%= quotation.id %></td>
-        <td><%= quotation.author_name %></td>
-        <td><%= quotation.quote %></td>
-        <td><%= quotation.category %></td>
-        <td><%= quotation.created_at %></td>
-        <td><%= link_to "Delete", kill_path(:id => quotation.id, :quotation_id => quotation.id), :confirm => 'Are you sure?', :method => :delete %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-md-12" style="padding-top: 20px">
+    <%= link_to "Erase my personalization", clear_cookie_path, :method => :delete %>
+    <% if params[:sort_by] == "date" %>
+        <%= link_to "Sort by category", :action => :quotations, :sort_by => :category %>
+    <% else %>
+        <%= link_to "Sort by date", :action => :quotations, :sort_by => :date %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12" style="padding-top: 20px">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="thead-default">
+          <th>ID</th>
+          <th>Author name</th>
+          <th>Quote</th>
+          <th>Category</th>
+          <th>Operation</th>
+        </thead>
+        <tbody>
+        <% @quotations.each do |quotation|  %>
+          <tr>
+            <th scope="row" style="width: 5%"><%= quotation.id %></th>
+            <td style="width: 20%"><%= quotation.author_name %></td>
+            <td style="width: 50%"><%= quotation.quote %></td>
+            <td style="width: 15%"><%= quotation.category %></td>
+            <td style="width: 10%" class="text-xs-center"><%= link_to "Kill", kill_path(:id => quotation.id, :quotation_id => quotation.id), :confirm => 'Are you sure?', :method => :delete %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 <br/>
-<% if params[:sort_by] == "date" %>
-    <%= link_to "Sort by category", :action => :quotations, :sort_by => :category %>
-<% else %>
-    <%= link_to "Sort by date", :action => :quotations, :sort_by => :date %>
-<% end %>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -1,54 +1,62 @@
 <div class="row head">
-  <h1>Assignment 1 Solution</h1>
+  <div class="col-md-12">
+    <h1>Assignment 1 Solution</h1>
+  </div>
 </div>
 <div class="row">
-  <h3>What We Did</h3>
-  <p>
-    Before setting up the production server, we set up a testing production server on each of our local
-    machines.
-  </p>
-  <p>
-    First, we set up Apache 2 on the local machines. Using (1) and (6), we managed to get several virtual
-    hosts with several server names, e.g., app1.prod, app2.dev, to show up on the localhost.
-    Then we went on to install Ruby, Rails, and PostGreSql by using (1), (2), and (3). At first, the
-    rails spat out this error message "Incomplete response received from application" on the browser.
-    We managed to solve the error using (4). Afterward, we tried out scraping the top ten trending videos
-    on YouTube, using (8), (9), and (10).
-  </p>
-  <p>
-    Second, we set up the production server. To do that, we configured the proxy and SSH to get a server
-    access through the CSIM's firewall. In addition to (1) and (5), we also used (7) to pass through the
-    firewall and to change the connection port
-    from 22 to 443 so that we could get a server access from outside the campus.
-    After that, we set up the production server
-    similar to the one we set up on the local machines.
-  </p>
-  <p>
-    As we were working on the production server, we also documented the processes we went through and the
-    sources we had used. When we managed to duplicate the testing server on the production server, we went
-    on to complete the tasks as mentioned in the assignment 1.
-  </p>
+  <div class="col-md-12">
+    <h3>What We Did</h3>
+    <p>
+      Before setting up the production server, we set up a testing production server on each of our local
+      machines.
+    </p>
+    <p>
+      First, we set up Apache 2 on the local machines. Using (1) and (6), we managed to get several virtual
+      hosts with several server names, e.g., app1.prod, app2.dev, to show up on the localhost.
+      Then we went on to install Ruby, Rails, and PostGreSql by using (1), (2), and (3). At first, the
+      rails spat out this error message "Incomplete response received from application" on the browser.
+      We managed to solve the error using (4). Afterward, we tried out scraping the top ten trending videos
+      on YouTube, using (8), (9), and (10).
+    </p>
+    <p>
+      Second, we set up the production server. To do that, we configured the proxy and SSH to get a server
+      access through the CSIM's firewall. In addition to (1) and (5), we also used (7) to pass through the
+      firewall and to change the connection port
+      from 22 to 443 so that we could get a server access from outside the campus.
+      After that, we set up the production server
+      similar to the one we set up on the local machines.
+    </p>
+    <p>
+      As we were working on the production server, we also documented the processes we went through and the
+      sources we had used. When we managed to duplicate the testing server on the production server, we went
+      on to complete the tasks as mentioned in the assignment 1.
+    </p>
+  </div>
 </div>
 <div class="row">
-  <ul>
-    <li><strong>View <%= link_to 'the divide-by-zero exception', exception_explanation_path %> explanation</strong></li>
-    <li><strong>View <%= link_to 'the top 10 trending videos', youtube_top_ten_path %> on YouTube</strong></li>
-  </ul>
+  <div class="col-md-12">
+    <ul>
+      <li><strong>View <%= link_to 'the divide-by-zero exception', exception_explanation_path %> explanation</strong></li>
+      <li><strong>View <%= link_to 'the top 10 trending videos', youtube_top_ten_path %> on YouTube</strong></li>
+    </ul>
+  </div>
 </div>
 <div class="row" style="padding-top: 20px">
-  <h3>References</h3>
-  <ol>
-    <li>https://cis.ait.asia/course_offerings/440/lap-companion</li>
-    <li>https://cis.ait.asia/course_offerings/440/rails-companion</li>
-    <li>https://gorails.com/setup/ubuntu/16.04</li>
-    <li>http://stackoverflow.com/questions/29241053/incomplete-response-received-from-application-from-nginx-passenger</li>
-    <li>https://cis.ait.asia/course_offerings/440/ait-git-guide</li>
-    <li>https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-16-04</li>
-    <li>https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-14-04</li>
-    <li>http://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api</li>
-    <li>http://www.nokogiri.org/tutorials/parsing_an_html_xml_document.html</li>
-    <li>http://ryandao.net/ruby-rails-screen-scraping-nikogiri-and-openuri</li>
-  </ol>
+  <div class="col-md-12">
+    <h3>References</h3>
+    <ol>
+      <li>https://cis.ait.asia/course_offerings/440/lap-companion</li>
+      <li>https://cis.ait.asia/course_offerings/440/rails-companion</li>
+      <li>https://gorails.com/setup/ubuntu/16.04</li>
+      <li>http://stackoverflow.com/questions/29241053/incomplete-response-received-from-application-from-nginx-passenger</li>
+      <li>https://cis.ait.asia/course_offerings/440/ait-git-guide</li>
+      <li>https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-16-04</li>
+      <li>https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-14-04</li>
+      <li>http://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api</li>
+      <li>http://www.nokogiri.org/tutorials/parsing_an_html_xml_document.html</li>
+      <li>http://ryandao.net/ruby-rails-screen-scraping-nikogiri-and-openuri</li>
+    </ol>
+  </div>
 </div>
 
 
