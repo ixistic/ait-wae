@@ -22,7 +22,6 @@
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">New quotation</button>
   </div>
 </div>
-
 <hr>
 <div class="row">
   <div class="col-md-12" style="padding-top: 20px">
@@ -35,14 +34,13 @@
     <% end %>
   </div>
 </div>
-<br>
 <div class="row">
   <div class="col-md-12" style="padding-top: 20px">
     <%= link_to "Erase my personalization", clear_cookie_path, :method => :delete %>
     <% if params[:sort_by] == "date" %>
-        <%= link_to "Sort by category", :action => :quotations, :sort_by => :category %>
+        <%= link_to "Sort by category", {:action => :quotations, :sort_by => :category}, class: 'pull-xs-right' %>
     <% else %>
-        <%= link_to "Sort by date", :action => :quotations, :sort_by => :date %>
+        <%= link_to "Sort by date", {:action => :quotations, :sort_by => :date}, class: 'pull-xs-right' %>
     <% end %>
   </div>
 </div>
