@@ -66,7 +66,7 @@
             <td style="width: 20%"><%= quotation.author_name %></td>
             <td style="width: 50%"><%= quotation.quote %></td>
             <td style="width: 15%"><%= quotation.category %></td>
-            <td style="width: 10%" class="text-xs-center"><%= link_to "Kill", kill_path(:id => quotation.id, :quotation_id => quotation.id), :confirm => 'Are you sure?', :method => :delete %></td>
+            <td style="width: 10%" class="text-xs-center"><%= link_to "Kill", kill_path(:id => quotation.id, :quotation_id => quotation.id), :method => :delete %></td>
           </tr>
         <% end %>
         </tbody>
