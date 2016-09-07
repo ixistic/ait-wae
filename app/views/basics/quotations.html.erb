@@ -10,8 +10,8 @@
   <div class="col-md-12" style="padding-top: 20px">
     <%= form_tag(quotation_new_path, method: "post", class: 'form-inline') do %>
       <div class="form-group">
-        <%= label_tag :url, "URL for import quote : " %>
-        <%= text_field_tag :url, nil, size: 50, class: 'form-control' %>
+        <%= label_tag :url, "URL for import quote (xml) : " %>
+        <%= text_field_tag :url, nil, size: 50, class: 'form-control', placeholder: 'http://web8.cs.ait.ac.th/basics/2/quotations/xml' %>
       </div>
       <%= submit_tag "Import", class: 'btn btn-success' %>
     <% end %>
