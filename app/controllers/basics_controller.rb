@@ -53,7 +53,7 @@ class BasicsController < ApplicationController
     @quotation = Quotation.new
     query = Quotation.all
     if params[:q]
-      query = Quotation.search(params[:q].downcase).order(:created_at)
+      query = Quotation.search(params[:q].downcase)
     end
 
     if cookies[:quotations]
