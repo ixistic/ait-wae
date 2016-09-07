@@ -3,16 +3,14 @@
     <li class="nav-item active">
       <a class="nav-link" href="<%= home_index_path %>"><i class="fa fa-home" aria-hidden="true"></i> Web8 <span class="sr-only">(current)</span></a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">By Alfian & Werapat</a>
+    </li>
     <li class="nav-item pull-xs-right">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Assignment
-        </button>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-          <%= link_to 'Basic : PS1', task1_index_path, class: 'dropdown-item' %>
-          <%= link_to 'Basic : PS2', quotations_show_path, class: 'dropdown-item'  %>
-        </div>
-      </div>
+      <a class="nav-link" href="<%= task2_index_path %>">PS2</a>
+    </li>
+    <li class="nav-item pull-xs-right">
+      <a class="nav-link" href="<%= task1_index_path %>">PS1</a>
     </li>
   </ul>
 </nav>
