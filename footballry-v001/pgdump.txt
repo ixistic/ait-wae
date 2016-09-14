@@ -1,0 +1,5867 @@
+--
+-- PostgreSQL database cluster dump
+--
+
+SET default_transaction_read_only = off;
+
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+
+--
+-- Roles
+--
+
+CREATE ROLE ixistic;
+ALTER ROLE ixistic WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS;
+CREATE ROLE postgres;
+ALTER ROLE postgres WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN NOREPLICATION NOBYPASSRLS;
+
+
+
+
+
+
+--
+-- Database creation
+--
+
+CREATE DATABASE "AIT-schedule_development" WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE "AIT-schedule_test" WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE "BookStore_development" WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE "BookStore_test" WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE authentication_development WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE authentication_test WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE basic1_development WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE basic1_test WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE "footballry-v001_development" WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE "footballry-v001_test" WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE franchisehero_development WITH TEMPLATE = template0 OWNER = postgres;
+CREATE DATABASE franchisehero_test WITH TEMPLATE = template0 OWNER = postgres;
+CREATE DATABASE hero WITH TEMPLATE = template0 OWNER = postgres;
+CREATE DATABASE ixistic WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE map_development WITH TEMPLATE = template0 OWNER = postgres;
+CREATE DATABASE map_test WITH TEMPLATE = template0 OWNER = postgres;
+CREATE DATABASE pokemongo_development WITH TEMPLATE = template0 OWNER = postgres;
+CREATE DATABASE pokemongo_test WITH TEMPLATE = template0 OWNER = postgres;
+CREATE DATABASE quoteboard_development WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE quoteboard_test WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE readit_development WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE readit_test WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE "sample_Bookstore_development" WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE "sample_Bookstore_test" WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE studentdb_development WITH TEMPLATE = template0 OWNER = ixistic;
+CREATE DATABASE studentdb_test WITH TEMPLATE = template0 OWNER = ixistic;
+REVOKE ALL ON DATABASE template1 FROM PUBLIC;
+REVOKE ALL ON DATABASE template1 FROM ixistic;
+GRANT ALL ON DATABASE template1 TO ixistic;
+GRANT CONNECT ON DATABASE template1 TO PUBLIC;
+
+
+\connect "AIT-schedule_development"
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO ixistic;
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO ixistic;
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2016-08-22 04:46:13.125779	2016-08-22 04:46:13.125779
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY schema_migrations (version) FROM stdin;
+\.
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect "AIT-schedule_test"
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect "BookStore_development"
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO ixistic;
+
+--
+-- Name: authors; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE authors (
+    id integer NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE authors OWNER TO ixistic;
+
+--
+-- Name: authors_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE authors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE authors_id_seq OWNER TO ixistic;
+
+--
+-- Name: authors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE authors_id_seq OWNED BY authors.id;
+
+
+--
+-- Name: authorships; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE authorships (
+    id integer NOT NULL,
+    book_id integer,
+    author_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE authorships OWNER TO ixistic;
+
+--
+-- Name: authorships_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE authorships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE authorships_id_seq OWNER TO ixistic;
+
+--
+-- Name: authorships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE authorships_id_seq OWNED BY authorships.id;
+
+
+--
+-- Name: books; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE books (
+    id integer NOT NULL,
+    name character varying,
+    published_date date,
+    publisher_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE books OWNER TO ixistic;
+
+--
+-- Name: books_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE books_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE books_id_seq OWNER TO ixistic;
+
+--
+-- Name: books_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE books_id_seq OWNED BY books.id;
+
+
+--
+-- Name: installs; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE installs (
+    id integer NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip inet,
+    last_sign_in_ip inet,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE installs OWNER TO ixistic;
+
+--
+-- Name: installs_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE installs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE installs_id_seq OWNER TO ixistic;
+
+--
+-- Name: installs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE installs_id_seq OWNED BY installs.id;
+
+
+--
+-- Name: publishers; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE publishers (
+    id integer NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE publishers OWNER TO ixistic;
+
+--
+-- Name: publishers_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE publishers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE publishers_id_seq OWNER TO ixistic;
+
+--
+-- Name: publishers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE publishers_id_seq OWNED BY publishers.id;
+
+
+--
+-- Name: rentals; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE rentals (
+    id integer NOT NULL,
+    book_id integer,
+    user_id integer,
+    rental_date timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE rentals OWNER TO ixistic;
+
+--
+-- Name: rentals_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE rentals_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE rentals_id_seq OWNER TO ixistic;
+
+--
+-- Name: rentals_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE rentals_id_seq OWNED BY rentals.id;
+
+
+--
+-- Name: roles; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE roles (
+    id integer NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE roles OWNER TO ixistic;
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE roles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE roles_id_seq OWNER TO ixistic;
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO ixistic;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    name character varying,
+    address character varying,
+    role_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip inet,
+    last_sign_in_ip inet
+);
+
+
+ALTER TABLE users OWNER TO ixistic;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO ixistic;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authors ALTER COLUMN id SET DEFAULT nextval('authors_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authorships ALTER COLUMN id SET DEFAULT nextval('authorships_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY books ALTER COLUMN id SET DEFAULT nextval('books_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY installs ALTER COLUMN id SET DEFAULT nextval('installs_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY publishers ALTER COLUMN id SET DEFAULT nextval('publishers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY rentals ALTER COLUMN id SET DEFAULT nextval('rentals_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2016-08-11 03:30:41.583799	2016-08-11 03:30:41.583799
+\.
+
+
+--
+-- Data for Name: authors; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY authors (id, name, created_at, updated_at) FROM stdin;
+1	William Shakespeare	2016-08-11 03:45:24.196871	2016-08-11 03:45:24.196871
+2	Agatha Christie	2016-08-11 03:45:32.741253	2016-08-11 03:45:32.741253
+3	Barbara Cartland	2016-08-11 03:45:42.828987	2016-08-11 03:45:42.828987
+4	Danielle Steel	2016-08-11 03:45:52.32199	2016-08-11 03:45:52.32199
+\.
+
+
+--
+-- Name: authors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('authors_id_seq', 6, true);
+
+
+--
+-- Data for Name: authorships; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY authorships (id, book_id, author_id, created_at, updated_at) FROM stdin;
+1	1	1	2016-08-11 03:46:25.822351	2016-08-11 03:46:25.822351
+2	2	1	2016-08-11 03:46:38.66007	2016-08-11 03:46:38.66007
+3	2	2	2016-08-11 03:46:38.667173	2016-08-11 03:46:38.667173
+4	3	3	2016-08-11 03:46:52.340623	2016-08-11 03:46:52.340623
+\.
+
+
+--
+-- Name: authorships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('authorships_id_seq', 13, true);
+
+
+--
+-- Data for Name: books; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY books (id, name, published_date, publisher_id, created_at, updated_at) FROM stdin;
+1	TRULY MADLY GUILTY	2016-08-11	1	2016-08-11 03:46:25.76353	2016-08-11 03:46:25.76353
+2	THE GIRL ON THE TRAIN	2016-08-11	4	2016-08-11 03:46:38.640013	2016-08-11 03:46:38.640013
+3	THE BLACK WIDOW	2016-08-11	4	2016-08-11 03:46:52.323987	2016-08-11 03:46:52.323987
+\.
+
+
+--
+-- Name: books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('books_id_seq', 9, true);
+
+
+--
+-- Data for Name: installs; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY installs (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: installs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('installs_id_seq', 1, false);
+
+
+--
+-- Data for Name: publishers; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY publishers (id, name, created_at, updated_at) FROM stdin;
+1	Pearson	2016-08-11 03:44:06.399313	2016-08-11 03:44:06.399313
+2	\tThomsonReuters	2016-08-11 03:44:17.149373	2016-08-11 03:44:17.149373
+3	\tRELX Group	2016-08-11 03:44:30.017428	2016-08-11 03:44:30.017428
+4	Wolters Kluwer	2016-08-11 03:44:39.909083	2016-08-11 03:44:39.909083
+\.
+
+
+--
+-- Name: publishers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('publishers_id_seq', 6, true);
+
+
+--
+-- Data for Name: rentals; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY rentals (id, book_id, user_id, rental_date, created_at, updated_at) FROM stdin;
+1	1	1	2016-08-11 03:51:00	2016-08-11 03:51:48.971554	2016-08-11 03:51:48.971554
+3	2	3	2016-08-11 04:19:00	2016-08-11 04:19:07.569826	2016-08-11 04:19:07.569826
+4	1	3	2016-08-11 04:19:00	2016-08-11 04:19:59.979531	2016-08-11 04:19:59.979531
+5	1	3	2016-08-11 04:45:00	2016-08-11 04:45:58.076428	2016-08-11 04:45:58.076428
+\.
+
+
+--
+-- Name: rentals_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('rentals_id_seq', 5, true);
+
+
+--
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY roles (id, name, created_at, updated_at) FROM stdin;
+1	Admin	2016-08-11 03:33:04.346532	2016-08-11 03:33:04.346532
+2	Editor	2016-08-11 03:33:04.380711	2016-08-11 03:33:04.380711
+\.
+
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('roles_id_seq', 2, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160811032232
+20160810030841
+20160810032746
+20160810034711
+20160810035046
+20160811023258
+20160811023349
+20160811030908
+20160811031528
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY users (id, name, address, role_id, created_at, updated_at, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip) FROM stdin;
+1	\N	\N	1	2016-08-11 03:33:04.599272	2016-08-11 03:33:04.599272	test@ait.asia	$2a$11$HxwWTWBKHVe2UeWj0SFeOurChnNifo8Ji04BBxUqHSJnfjShoBIrm	\N	\N	\N	0	\N	\N	\N	\N
+3	\N	\N	2	2016-08-11 04:03:21.03604	2016-08-11 07:07:47.699154	teeravipark@gmail.com	$2a$11$6LHwwTDjQXdlFujpgTDdQu.sOFR7TgdzkPluNEAp2xs1ulY2TGvVS	\N	\N	\N	2	2016-08-11 07:07:47.696848	2016-08-11 04:03:21.052063	127.0.0.1	127.0.0.1
+2	\N	\N	1	2016-08-11 03:40:37.171214	2016-08-11 07:08:04.22614	test@test.com	$2a$11$z9hS0KuERmkzyByxfy3enOYHIdXaSNBj5bRcTDeT9p3Fzt0EnZpme	\N	\N	\N	3	2016-08-11 07:08:04.224558	2016-08-11 04:45:46.27879	127.0.0.1	127.0.0.1
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('users_id_seq', 3, true);
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: authors_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authors
+    ADD CONSTRAINT authors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: authorships_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authorships
+    ADD CONSTRAINT authorships_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: books_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY books
+    ADD CONSTRAINT books_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: installs_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY installs
+    ADD CONSTRAINT installs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: publishers_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY publishers
+    ADD CONSTRAINT publishers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: rentals_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY rentals
+    ADD CONSTRAINT rentals_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: roles_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY roles
+    ADD CONSTRAINT roles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_authorships_on_author_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_authorships_on_author_id ON authorships USING btree (author_id);
+
+
+--
+-- Name: index_authorships_on_book_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_authorships_on_book_id ON authorships USING btree (book_id);
+
+
+--
+-- Name: index_books_on_publisher_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_books_on_publisher_id ON books USING btree (publisher_id);
+
+
+--
+-- Name: index_installs_on_email; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE UNIQUE INDEX index_installs_on_email ON installs USING btree (email);
+
+
+--
+-- Name: index_installs_on_reset_password_token; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE UNIQUE INDEX index_installs_on_reset_password_token ON installs USING btree (reset_password_token);
+
+
+--
+-- Name: index_rentals_on_book_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_rentals_on_book_id ON rentals USING btree (book_id);
+
+
+--
+-- Name: index_rentals_on_user_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_rentals_on_user_id ON rentals USING btree (user_id);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: index_users_on_role_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_users_on_role_id ON users USING btree (role_id);
+
+
+--
+-- Name: fk_rails_642f17018b; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT fk_rails_642f17018b FOREIGN KEY (role_id) REFERENCES roles(id);
+
+
+--
+-- Name: fk_rails_d7ae2b039e; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY books
+    ADD CONSTRAINT fk_rails_d7ae2b039e FOREIGN KEY (publisher_id) REFERENCES publishers(id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect "BookStore_test"
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO ixistic;
+
+--
+-- Name: authors; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE authors (
+    id integer NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE authors OWNER TO ixistic;
+
+--
+-- Name: authors_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE authors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE authors_id_seq OWNER TO ixistic;
+
+--
+-- Name: authors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE authors_id_seq OWNED BY authors.id;
+
+
+--
+-- Name: authorships; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE authorships (
+    id integer NOT NULL,
+    book_id integer,
+    author_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE authorships OWNER TO ixistic;
+
+--
+-- Name: authorships_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE authorships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE authorships_id_seq OWNER TO ixistic;
+
+--
+-- Name: authorships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE authorships_id_seq OWNED BY authorships.id;
+
+
+--
+-- Name: books; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE books (
+    id integer NOT NULL,
+    name character varying,
+    published_date date,
+    publisher_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE books OWNER TO ixistic;
+
+--
+-- Name: books_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE books_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE books_id_seq OWNER TO ixistic;
+
+--
+-- Name: books_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE books_id_seq OWNED BY books.id;
+
+
+--
+-- Name: installs; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE installs (
+    id integer NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip inet,
+    last_sign_in_ip inet,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE installs OWNER TO ixistic;
+
+--
+-- Name: installs_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE installs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE installs_id_seq OWNER TO ixistic;
+
+--
+-- Name: installs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE installs_id_seq OWNED BY installs.id;
+
+
+--
+-- Name: publishers; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE publishers (
+    id integer NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE publishers OWNER TO ixistic;
+
+--
+-- Name: publishers_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE publishers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE publishers_id_seq OWNER TO ixistic;
+
+--
+-- Name: publishers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE publishers_id_seq OWNED BY publishers.id;
+
+
+--
+-- Name: rentals; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE rentals (
+    id integer NOT NULL,
+    book_id integer,
+    user_id integer,
+    rental_date timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE rentals OWNER TO ixistic;
+
+--
+-- Name: rentals_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE rentals_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE rentals_id_seq OWNER TO ixistic;
+
+--
+-- Name: rentals_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE rentals_id_seq OWNED BY rentals.id;
+
+
+--
+-- Name: roles; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE roles (
+    id integer NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE roles OWNER TO ixistic;
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE roles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE roles_id_seq OWNER TO ixistic;
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO ixistic;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    name character varying,
+    address character varying,
+    role_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip inet,
+    last_sign_in_ip inet
+);
+
+
+ALTER TABLE users OWNER TO ixistic;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO ixistic;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authors ALTER COLUMN id SET DEFAULT nextval('authors_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authorships ALTER COLUMN id SET DEFAULT nextval('authorships_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY books ALTER COLUMN id SET DEFAULT nextval('books_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY installs ALTER COLUMN id SET DEFAULT nextval('installs_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY publishers ALTER COLUMN id SET DEFAULT nextval('publishers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY rentals ALTER COLUMN id SET DEFAULT nextval('rentals_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2016-08-11 03:30:41.771435	2016-08-11 03:30:41.771435
+\.
+
+
+--
+-- Data for Name: authors; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY authors (id, name, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: authors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('authors_id_seq', 1, false);
+
+
+--
+-- Data for Name: authorships; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY authorships (id, book_id, author_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: authorships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('authorships_id_seq', 1, false);
+
+
+--
+-- Data for Name: books; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY books (id, name, published_date, publisher_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('books_id_seq', 1, false);
+
+
+--
+-- Data for Name: installs; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY installs (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: installs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('installs_id_seq', 1, false);
+
+
+--
+-- Data for Name: publishers; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY publishers (id, name, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: publishers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('publishers_id_seq', 1, false);
+
+
+--
+-- Data for Name: rentals; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY rentals (id, book_id, user_id, rental_date, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: rentals_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('rentals_id_seq', 1, false);
+
+
+--
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY roles (id, name, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('roles_id_seq', 1, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160811032232
+20160810030841
+20160810032746
+20160810034711
+20160810035046
+20160811023258
+20160811023349
+20160811030908
+20160811031528
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY users (id, name, address, role_id, created_at, updated_at, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip) FROM stdin;
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, false);
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: authors_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authors
+    ADD CONSTRAINT authors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: authorships_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authorships
+    ADD CONSTRAINT authorships_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: books_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY books
+    ADD CONSTRAINT books_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: installs_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY installs
+    ADD CONSTRAINT installs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: publishers_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY publishers
+    ADD CONSTRAINT publishers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: rentals_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY rentals
+    ADD CONSTRAINT rentals_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: roles_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY roles
+    ADD CONSTRAINT roles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_authorships_on_author_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_authorships_on_author_id ON authorships USING btree (author_id);
+
+
+--
+-- Name: index_authorships_on_book_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_authorships_on_book_id ON authorships USING btree (book_id);
+
+
+--
+-- Name: index_books_on_publisher_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_books_on_publisher_id ON books USING btree (publisher_id);
+
+
+--
+-- Name: index_installs_on_email; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE UNIQUE INDEX index_installs_on_email ON installs USING btree (email);
+
+
+--
+-- Name: index_installs_on_reset_password_token; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE UNIQUE INDEX index_installs_on_reset_password_token ON installs USING btree (reset_password_token);
+
+
+--
+-- Name: index_rentals_on_book_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_rentals_on_book_id ON rentals USING btree (book_id);
+
+
+--
+-- Name: index_rentals_on_user_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_rentals_on_user_id ON rentals USING btree (user_id);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: index_users_on_role_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_users_on_role_id ON users USING btree (role_id);
+
+
+--
+-- Name: fk_rails_642f17018b; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT fk_rails_642f17018b FOREIGN KEY (role_id) REFERENCES roles(id);
+
+
+--
+-- Name: fk_rails_d7ae2b039e; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY books
+    ADD CONSTRAINT fk_rails_d7ae2b039e FOREIGN KEY (publisher_id) REFERENCES publishers(id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect authentication_development
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO ixistic;
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO ixistic;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    email character varying,
+    password_hash character varying,
+    password_salt character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE users OWNER TO ixistic;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO ixistic;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2016-09-02 02:15:49.030128	2016-09-02 02:15:49.030128
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160902021540
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY users (id, email, password_hash, password_salt, created_at, updated_at) FROM stdin;
+1	teeravipark@gmail.com	$2a$10$unkv9NVMGMkly9jtPtF7aeHmJO8LEAhmAdxSUNi8v.RhrQKAizaTW	$2a$10$unkv9NVMGMkly9jtPtF7ae	2016-09-02 02:26:53.630448	2016-09-02 02:26:53.630448
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, true);
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect authentication_test
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect basic1_development
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- Name: portfolio_value(); Type: FUNCTION; Schema: public; Owner: ixistic
+--
+
+CREATE FUNCTION portfolio_value() RETURNS TABLE(all_symbol character varying, total_stock money)
+    LANGUAGE plpgsql
+    AS $$
+
+    declare
+        table_my_stock_prices cursor for
+            select my_stocks.symbol as new_symbol,
+            my_stocks.n_shares * stock_prices.price
+            as total_stock
+            from my_stocks inner join stock_prices
+            on my_stocks.symbol=stock_prices.symbol;
+        table_record text;
+
+    begin
+        for table_record in table_my_stock_prices loop
+            return query select table_record.new_symbol, table_record.total_stock;
+        end loop;
+        return;
+    end;
+$$;
+
+
+ALTER FUNCTION public.portfolio_value() OWNER TO ixistic;
+
+--
+-- Name: stock_value_by_ascii(text); Type: FUNCTION; Schema: public; Owner: ixistic
+--
+
+CREATE FUNCTION stock_value_by_ascii(new_symbol text) RETURNS integer
+    LANGUAGE plpgsql
+    AS $$
+    declare
+        new_stock_value integer;
+        new_symbol_in_array text[];
+    begin
+        new_stock_value := 0;
+        new_symbol_in_array := string_to_array(new_symbol, NULL);
+
+        for x in array_lower(new_symbol_in_array, 1)..array_upper(new_symbol_in_array, 1) loop
+            new_stock_value := new_stock_value + ascii(new_symbol_in_array[x]);
+        end loop;
+
+        return new_stock_value;
+
+    end;
+$$;
+
+
+ALTER FUNCTION public.stock_value_by_ascii(new_symbol text) OWNER TO ixistic;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO ixistic;
+
+--
+-- Name: my_stocks; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE my_stocks (
+    symbol character varying(20) NOT NULL,
+    n_shares integer NOT NULL,
+    date_acquired date NOT NULL
+);
+
+
+ALTER TABLE my_stocks OWNER TO ixistic;
+
+--
+-- Name: newly_acquired_stocks; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE newly_acquired_stocks (
+    symbol character varying(20) NOT NULL,
+    n_shares integer NOT NULL,
+    date_acquired date NOT NULL
+);
+
+
+ALTER TABLE newly_acquired_stocks OWNER TO ixistic;
+
+--
+-- Name: quotations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE quotations (
+    id integer NOT NULL,
+    author_name character varying,
+    category character varying,
+    quote text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE quotations OWNER TO ixistic;
+
+--
+-- Name: quotations_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE quotations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE quotations_id_seq OWNER TO ixistic;
+
+--
+-- Name: quotations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE quotations_id_seq OWNED BY quotations.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO ixistic;
+
+--
+-- Name: stock_prices; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE stock_prices (
+    symbol character varying(20) NOT NULL,
+    quote_date date NOT NULL,
+    price integer
+);
+
+
+ALTER TABLE stock_prices OWNER TO ixistic;
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY quotations ALTER COLUMN id SET DEFAULT nextval('quotations_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2016-09-06 13:35:00.360755	2016-09-06 13:35:00.360755
+\.
+
+
+--
+-- Data for Name: my_stocks; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY my_stocks (symbol, n_shares, date_acquired) FROM stdin;
+GOOGL	230	2016-09-01
+AAPL	240	2016-08-20
+YHOO	150	2015-05-28
+BIDU	500	2014-01-19
+TWTR	180	2013-05-16
+	340	2016-06-24
+\.
+
+
+--
+-- Data for Name: newly_acquired_stocks; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY newly_acquired_stocks (symbol, n_shares, date_acquired) FROM stdin;
+GOOGL	230	2016-09-01
+AAPL	240	2016-08-20
+BIDU	500	2014-01-19
+\.
+
+
+--
+-- Data for Name: quotations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY quotations (id, author_name, category, quote, created_at, updated_at) FROM stdin;
+1	Martin Luther King Jr.	Inspirational	If you can't fly, then run,\r\nif you can't run, then walk,\r\nif you can't walk, then crawl,\r\nbut what ever you do, you have to keep moving forward.	2016-09-06 13:37:04.918807	2016-09-06 13:37:04.918807
+2	Edward R. Murrow	Undefined	The newest computer can merely compound, at speed, the oldest problem in the relations between\r\nhuman beings, and in the end the communicator will be confronted with the old problem, of what\r\nto say and how to say it.	2016-09-06 13:37:04.95334	2016-09-06 13:37:04.95334
+3	Nelson R. Mandela	Inspirational	The greatest glory in living lies not in never falling, but in rising every time we fall. 	2016-09-06 13:37:04.958567	2016-09-06 13:37:04.958567
+4	Napoleon Bonaparte	Determination	 True wisdom for a general is vigorous determination. 	2016-09-06 13:37:04.96398	2016-09-06 13:37:04.96398
+5	Unknown Heroine	Undefined	If a man speaks in the forest and there is no woman there to hear him, is he still wrong?	2016-09-06 13:37:04.969148	2016-09-06 13:37:04.969148
+6	Frank Leahy	Undefined	Egotism is the anesthetic that  dulls the pain of stupidity. 	2016-09-06 13:37:04.974329	2016-09-06 13:37:04.974329
+7	Edward Young	Undefined	Some of renown, on scarps of learning dote, And think they grow immortal as the quote.	2016-09-06 13:37:04.979541	2016-09-06 13:37:04.979541
+10	ffff	ffff	ff	2016-09-06 14:29:09.52623	2016-09-06 14:29:09.52623
+11	aaaa	aaa	aaa	2016-09-06 14:41:36.516916	2016-09-06 14:41:36.516916
+12	ccccc	Determination	cccc	2016-09-06 14:41:46.577379	2016-09-06 14:41:46.577379
+13	Martin Luther King Jr.	Inspirational	If you can't fly, then run,\r\nif you can't run, then walk,\r\nif you can't walk, then crawl,\r\nbut what ever you do, you have to keep moving forward.	2016-09-06 15:15:29.431524	2016-09-06 15:15:29.431524
+14	Edward R. Murrow	Undefined	The newest computer can merely compound, at speed, the oldest problem in the relations between\r\nhuman beings, and in the end the communicator will be confronted with the old problem, of what\r\nto say and how to say it.	2016-09-06 15:15:29.494418	2016-09-06 15:15:29.494418
+15	Nelson R. Mandela	Inspirational	The greatest glory in living lies not in never falling, but in rising every time we fall. 	2016-09-06 15:15:29.538399	2016-09-06 15:15:29.538399
+16	Napoleon Bonaparte	Determination	 True wisdom for a general is vigorous determination. 	2016-09-06 15:15:29.56636	2016-09-06 15:15:29.56636
+17	Unknown Heroine	Undefined	If a man speaks in the forest and there is no woman there to hear him, is he still wrong?	2016-09-06 15:15:29.591153	2016-09-06 15:15:29.591153
+18	Frank Leahy	Undefined	Egotism is the anesthetic that  dulls the pain of stupidity. 	2016-09-06 15:15:29.624702	2016-09-06 15:15:29.624702
+19	Edward Young	Undefined	Some of renown, on scarps of learning dote, And think they grow immortal as the quote.	2016-09-06 15:15:29.659374	2016-09-06 15:15:29.659374
+20	dxx	Determination	xxx	2016-09-06 15:15:29.71776	2016-09-06 15:15:29.71776
+21	Author test	adnl	alfnl	2016-09-06 15:15:29.745328	2016-09-06 15:15:29.745328
+22	aaa	aaaaaaaa	aaaaaaaaaa	2016-09-07 13:37:10.380186	2016-09-07 13:37:10.380186
+23	ssss	Inspirational	ssss	2016-09-07 13:37:28.038316	2016-09-07 13:37:28.038316
+\.
+
+
+--
+-- Name: quotations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('quotations_id_seq', 23, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160831100007
+\.
+
+
+--
+-- Data for Name: stock_prices; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY stock_prices (symbol, quote_date, price) FROM stdin;
+GOOGL	2016-09-07	376
+YHOO	2016-09-07	319
+AAPL	2016-09-07	286
+BIDU	2016-09-07	292
+TWTR	2016-09-07	337
+\.
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: quotations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY quotations
+    ADD CONSTRAINT quotations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect basic1_test
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO ixistic;
+
+--
+-- Name: quotations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE quotations (
+    id integer NOT NULL,
+    author_name character varying,
+    category character varying,
+    quote text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE quotations OWNER TO ixistic;
+
+--
+-- Name: quotations_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE quotations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE quotations_id_seq OWNER TO ixistic;
+
+--
+-- Name: quotations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE quotations_id_seq OWNED BY quotations.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO ixistic;
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY quotations ALTER COLUMN id SET DEFAULT nextval('quotations_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2016-09-06 13:35:00.447538	2016-09-06 13:35:00.447538
+\.
+
+
+--
+-- Data for Name: quotations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY quotations (id, author_name, category, quote, created_at, updated_at) FROM stdin;
+980190962	MyString	MyString	MyText	2016-09-14 13:50:07.469306	2016-09-14 13:50:07.469306
+298486374	MyString	MyString	MyText	2016-09-14 13:50:07.469306	2016-09-14 13:50:07.469306
+\.
+
+
+--
+-- Name: quotations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('quotations_id_seq', 980190963, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160831100007
+\.
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: quotations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY quotations
+    ADD CONSTRAINT quotations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect "footballry-v001_development"
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO ixistic;
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO ixistic;
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2016-09-14 13:44:09.74593	2016-09-14 13:44:09.74593
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY schema_migrations (version) FROM stdin;
+\.
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect "footballry-v001_test"
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO ixistic;
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO ixistic;
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	test	2016-09-14 13:56:11.543814	2016-09-14 13:56:11.543814
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY schema_migrations (version) FROM stdin;
+0
+\.
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect franchisehero_development
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE active_admin_comments (
+    id integer NOT NULL,
+    namespace character varying,
+    body text,
+    resource_id character varying NOT NULL,
+    resource_type character varying NOT NULL,
+    author_id integer,
+    author_type character varying,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE active_admin_comments OWNER TO postgres;
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE active_admin_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE active_admin_comments_id_seq OWNER TO postgres;
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
+
+
+--
+-- Name: admin_users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE admin_users (
+    id integer NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip inet,
+    last_sign_in_ip inet,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE admin_users OWNER TO postgres;
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE admin_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE admin_users_id_seq OWNER TO postgres;
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE admin_users_id_seq OWNED BY admin_users.id;
+
+
+--
+-- Name: interviews; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE interviews (
+    id integer NOT NULL,
+    name character varying,
+    email character varying,
+    tel character varying,
+    franchise_name character varying
+);
+
+
+ALTER TABLE interviews OWNER TO postgres;
+
+--
+-- Name: interviews_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE interviews_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE interviews_id_seq OWNER TO postgres;
+
+--
+-- Name: interviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE interviews_id_seq OWNED BY interviews.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO postgres;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip inet,
+    last_sign_in_ip inet,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('active_admin_comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY admin_users ALTER COLUMN id SET DEFAULT nextval('admin_users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY interviews ALTER COLUMN id SET DEFAULT nextval('interviews_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Data for Name: active_admin_comments; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY active_admin_comments (id, namespace, body, resource_id, resource_type, author_id, author_type, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('active_admin_comments_id_seq', 1, false);
+
+
+--
+-- Data for Name: admin_users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY admin_users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at) FROM stdin;
+1	teeravipark@gmail.com	$2a$10$W2AaPM1GAIvz78xv5HJYjeSPyhPXM8NuuW36cygnU/Ab/cq47kL0O	\N	\N	\N	1	2016-05-10 10:30:01.396373	2016-05-10 10:30:01.396373	127.0.0.1	127.0.0.1	2016-05-10 10:29:38.997972	2016-05-10 10:30:01.401046
+\.
+
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('admin_users_id_seq', 1, true);
+
+
+--
+-- Data for Name: interviews; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY interviews (id, name, email, tel, franchise_name) FROM stdin;
+1	test	teeravipark@gmail.com	test	\N
+2	test		test	\N
+3	test	teeravipark@gmail.com	eee	test
+\.
+
+
+--
+-- Name: interviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('interviews_id_seq', 3, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160510091830
+20160510100814
+20160510101305
+20160510101402
+20160510101406
+20160510162833
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, false);
+
+
+--
+-- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY active_admin_comments
+    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: admin_users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY admin_users
+    ADD CONSTRAINT admin_users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: interviews_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY interviews
+    ADD CONSTRAINT interviews_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_active_admin_comments_on_author_type_and_author_id ON active_admin_comments USING btree (author_type, author_id);
+
+
+--
+-- Name: index_active_admin_comments_on_namespace; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_active_admin_comments_on_namespace ON active_admin_comments USING btree (namespace);
+
+
+--
+-- Name: index_active_admin_comments_on_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON active_admin_comments USING btree (resource_type, resource_id);
+
+
+--
+-- Name: index_admin_users_on_email; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_admin_users_on_email ON admin_users USING btree (email);
+
+
+--
+-- Name: index_admin_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_admin_users_on_reset_password_token ON admin_users USING btree (reset_password_token);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect franchisehero_test
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: interviews; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE interviews (
+    id integer NOT NULL,
+    name character varying,
+    email character varying,
+    tel character varying
+);
+
+
+ALTER TABLE interviews OWNER TO postgres;
+
+--
+-- Name: interviews_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE interviews_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE interviews_id_seq OWNER TO postgres;
+
+--
+-- Name: interviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE interviews_id_seq OWNED BY interviews.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO postgres;
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY interviews ALTER COLUMN id SET DEFAULT nextval('interviews_id_seq'::regclass);
+
+
+--
+-- Data for Name: interviews; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY interviews (id, name, email, tel) FROM stdin;
+\.
+
+
+--
+-- Name: interviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('interviews_id_seq', 1, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160510100814
+20160510091830
+\.
+
+
+--
+-- Name: interviews_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY interviews
+    ADD CONSTRAINT interviews_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect hero
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect ixistic
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: my_stocks; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE my_stocks (
+    symbol character varying(20) NOT NULL,
+    n_shares integer NOT NULL,
+    date_acquired date NOT NULL
+);
+
+
+ALTER TABLE my_stocks OWNER TO ixistic;
+
+--
+-- Data for Name: my_stocks; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY my_stocks (symbol, n_shares, date_acquired) FROM stdin;
+GOOGL	230	2016-09-01
+AAPL	240	2016-08-20
+YHOO	150	2015-05-28
+BIDU	500	2014-01-19
+TWTR	180	2013-05-16
+\.
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect map_development
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: franchises; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE franchises (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    name character varying,
+    tel character varying,
+    email character varying
+);
+
+
+ALTER TABLE franchises OWNER TO postgres;
+
+--
+-- Name: franchises_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE franchises_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE franchises_id_seq OWNER TO postgres;
+
+--
+-- Name: franchises_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE franchises_id_seq OWNED BY franchises.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO postgres;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip character varying,
+    last_sign_in_ip character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    username character varying
+);
+
+
+ALTER TABLE users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY franchises ALTER COLUMN id SET DEFAULT nextval('franchises_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Data for Name: franchises; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY franchises (id, created_at, updated_at, name, tel, email) FROM stdin;
+1	2016-05-02 13:18:31.546284	2016-05-02 13:18:31.546284	asdas	1231232	asd@asd.co
+2	2016-05-04 08:39:34.736403	2016-05-04 08:39:34.736403	-	936	hello
+\.
+
+
+--
+-- Name: franchises_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('franchises_id_seq', 2, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160502104346
+20160502105114
+20160502111142
+20160502111851
+20160502111858
+20160502111905
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, username) FROM stdin;
+1	test@test.com	$2a$10$ZZD2UClElmtEG/flCPtt7uTuR1JebWVasjg.sKKoSPrVlxAhpMBd6	\N	\N	\N	1	2016-05-02 10:58:25.336284	2016-05-02 10:58:25.336284	127.0.0.1	127.0.0.1	2016-05-02 10:58:25.295522	2016-05-02 10:58:25.338517	\N
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, true);
+
+
+--
+-- Name: franchises_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY franchises
+    ADD CONSTRAINT franchises_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect map_test
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect pokemongo_development
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO postgres;
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY schema_migrations (version) FROM stdin;
+\.
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect pokemongo_test
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect postgres
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: postgres; Type: COMMENT; Schema: -; Owner: ixistic
+--
+
+COMMENT ON DATABASE postgres IS 'default administrative connection database';
+
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect quoteboard_development
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO ixistic;
+
+--
+-- Name: quotations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE quotations (
+    id integer NOT NULL,
+    quote character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    user_id integer
+);
+
+
+ALTER TABLE quotations OWNER TO ixistic;
+
+--
+-- Name: quotations_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE quotations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE quotations_id_seq OWNER TO ixistic;
+
+--
+-- Name: quotations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE quotations_id_seq OWNED BY quotations.id;
+
+
+--
+-- Name: roles; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE roles (
+    id integer NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE roles OWNER TO ixistic;
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE roles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE roles_id_seq OWNER TO ixistic;
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO ixistic;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip inet,
+    last_sign_in_ip inet,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    role_id integer
+);
+
+
+ALTER TABLE users OWNER TO ixistic;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO ixistic;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY quotations ALTER COLUMN id SET DEFAULT nextval('quotations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2016-09-09 02:25:08.073536	2016-09-09 02:25:08.073536
+\.
+
+
+--
+-- Data for Name: quotations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY quotations (id, quote, created_at, updated_at, user_id) FROM stdin;
+1	ssss	2016-09-09 03:08:53.325943	2016-09-09 03:59:27.667276	3
+2	aaaa	2016-09-09 04:08:23.349097	2016-09-09 04:08:23.349097	3
+3	jjjj	2016-09-09 04:08:57.380424	2016-09-09 04:08:57.380424	4
+4	aaaa	2016-09-09 04:18:01.928036	2016-09-09 04:18:01.928036	4
+\.
+
+
+--
+-- Name: quotations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('quotations_id_seq', 4, true);
+
+
+--
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY roles (id, name, created_at, updated_at) FROM stdin;
+1	Admin	2016-09-09 02:27:17.079966	2016-09-09 02:27:17.079966
+2	Member	2016-09-09 02:27:17.092622	2016-09-09 02:27:17.092622
+\.
+
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('roles_id_seq', 2, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160909021407
+20160909021911
+20160909022006
+20160909022148
+20160909023031
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, role_id) FROM stdin;
+1	admin@ait.asia	$2a$11$oTU4vOR6VbrlOncK.CxWSuNwQUXxXE4aaGCs3anjiw6JTnSLvWr92	\N	\N	\N	1	2016-09-09 02:28:48.988396	2016-09-09 02:28:48.988396	127.0.0.1	127.0.0.1	2016-09-09 02:27:17.327066	2016-09-09 02:36:43.437422	1
+3	teeravipark@gmail.com	$2a$11$MjabyrtQsBbQO/zGP5WsK.ydYIM3SUzYaTUvMEsMZDOgWMy75Kvo6	\N	\N	\N	3	2016-09-09 04:06:21.985777	2016-09-09 03:59:13.798984	127.0.0.1	127.0.0.1	2016-09-09 02:41:58.994374	2016-09-09 04:06:21.987211	1
+4	test@test.com	$2a$11$WxAUOagQacYZ0G23BeenGuEZkzgYOdKedK84h5TRVCM.4Mh0x7cUG	\N	\N	\N	2	2016-09-09 04:08:37.557311	2016-09-09 02:50:20.399602	127.0.0.1	127.0.0.1	2016-09-09 02:50:20.378116	2016-09-09 04:08:37.558606	2
+2	member@ait.asia	$2a$11$LiIX.fLxJp97ob/YmvvNV.NofEp2URr9/LT/QCnUA/y5Lqa41ERYK	\N	\N	\N	0	\N	\N	\N	\N	2016-09-09 02:27:17.505857	2016-09-09 04:27:10.924443	1
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('users_id_seq', 4, true);
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: quotations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY quotations
+    ADD CONSTRAINT quotations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: roles_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY roles
+    ADD CONSTRAINT roles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_quotations_on_user_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_quotations_on_user_id ON quotations USING btree (user_id);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: index_users_on_role_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_users_on_role_id ON users USING btree (role_id);
+
+
+--
+-- Name: fk_rails_642f17018b; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT fk_rails_642f17018b FOREIGN KEY (role_id) REFERENCES roles(id);
+
+
+--
+-- Name: fk_rails_f63036eec2; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY quotations
+    ADD CONSTRAINT fk_rails_f63036eec2 FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect quoteboard_test
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect readit_development
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO ixistic;
+
+--
+-- Name: links; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE links (
+    id integer NOT NULL,
+    name character varying,
+    url character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE links OWNER TO ixistic;
+
+--
+-- Name: links_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE links_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE links_id_seq OWNER TO ixistic;
+
+--
+-- Name: links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE links_id_seq OWNED BY links.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO ixistic;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip inet,
+    last_sign_in_ip inet,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    username character varying
+);
+
+
+ALTER TABLE users OWNER TO ixistic;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO ixistic;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY links ALTER COLUMN id SET DEFAULT nextval('links_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2016-09-02 04:35:08.438956	2016-09-02 04:35:08.438956
+\.
+
+
+--
+-- Data for Name: links; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY links (id, name, url, created_at, updated_at) FROM stdin;
+1	test	test.com	2016-09-02 04:36:10.942741	2016-09-02 04:36:10.942741
+\.
+
+
+--
+-- Name: links_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('links_id_seq', 1, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160902041253
+20160902043220
+20160902044317
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, username) FROM stdin;
+1	teeravipark@gmail.com	$2a$11$5Tl2wHN51Pb6uAizSKFLyeXIpZTAyCmnv0K.VuwvtGVlcoBKnyVJ.	\N	\N	\N	2	2016-09-02 04:51:44.019891	2016-09-02 04:36:00.309145	127.0.0.1	127.0.0.1	2016-09-02 04:36:00.286935	2016-09-02 04:55:22.042808	ice
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, true);
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: links_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY links
+    ADD CONSTRAINT links_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect readit_test
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect "sample_Bookstore_development"
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO ixistic;
+
+--
+-- Name: authors; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE authors (
+    id integer NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE authors OWNER TO ixistic;
+
+--
+-- Name: authors_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE authors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE authors_id_seq OWNER TO ixistic;
+
+--
+-- Name: authors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE authors_id_seq OWNED BY authors.id;
+
+
+--
+-- Name: authorships; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE authorships (
+    id integer NOT NULL,
+    book_id integer,
+    author_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE authorships OWNER TO ixistic;
+
+--
+-- Name: authorships_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE authorships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE authorships_id_seq OWNER TO ixistic;
+
+--
+-- Name: authorships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE authorships_id_seq OWNED BY authorships.id;
+
+
+--
+-- Name: books; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE books (
+    id integer NOT NULL,
+    name character varying,
+    publisher_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE books OWNER TO ixistic;
+
+--
+-- Name: books_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE books_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE books_id_seq OWNER TO ixistic;
+
+--
+-- Name: books_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE books_id_seq OWNED BY books.id;
+
+
+--
+-- Name: publishers; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE publishers (
+    id integer NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE publishers OWNER TO ixistic;
+
+--
+-- Name: publishers_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE publishers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE publishers_id_seq OWNER TO ixistic;
+
+--
+-- Name: publishers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE publishers_id_seq OWNED BY publishers.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO ixistic;
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authors ALTER COLUMN id SET DEFAULT nextval('authors_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authorships ALTER COLUMN id SET DEFAULT nextval('authorships_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY books ALTER COLUMN id SET DEFAULT nextval('books_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY publishers ALTER COLUMN id SET DEFAULT nextval('publishers_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2016-08-11 02:14:49.606383	2016-08-11 02:14:49.606383
+\.
+
+
+--
+-- Data for Name: authors; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY authors (id, name, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: authors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('authors_id_seq', 1, false);
+
+
+--
+-- Data for Name: authorships; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY authorships (id, book_id, author_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: authorships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('authorships_id_seq', 1, false);
+
+
+--
+-- Data for Name: books; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY books (id, name, publisher_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('books_id_seq', 1, false);
+
+
+--
+-- Data for Name: publishers; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY publishers (id, name, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: publishers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('publishers_id_seq', 1, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160809142553
+20160809163701
+20160809170611
+20160809170717
+\.
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: authors_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authors
+    ADD CONSTRAINT authors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: authorships_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authorships
+    ADD CONSTRAINT authorships_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: books_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY books
+    ADD CONSTRAINT books_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: publishers_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY publishers
+    ADD CONSTRAINT publishers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: index_authorships_on_author_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_authorships_on_author_id ON authorships USING btree (author_id);
+
+
+--
+-- Name: index_authorships_on_book_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_authorships_on_book_id ON authorships USING btree (book_id);
+
+
+--
+-- Name: index_books_on_publisher_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_books_on_publisher_id ON books USING btree (publisher_id);
+
+
+--
+-- Name: fk_rails_925f77f584; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authorships
+    ADD CONSTRAINT fk_rails_925f77f584 FOREIGN KEY (author_id) REFERENCES authors(id);
+
+
+--
+-- Name: fk_rails_a96d89f9ee; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY authorships
+    ADD CONSTRAINT fk_rails_a96d89f9ee FOREIGN KEY (book_id) REFERENCES books(id);
+
+
+--
+-- Name: fk_rails_d7ae2b039e; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY books
+    ADD CONSTRAINT fk_rails_d7ae2b039e FOREIGN KEY (publisher_id) REFERENCES publishers(id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect "sample_Bookstore_test"
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect studentdb_development
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO ixistic;
+
+--
+-- Name: project_evaluations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE project_evaluations (
+    id integer NOT NULL,
+    score integer,
+    student_id integer,
+    project_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE project_evaluations OWNER TO ixistic;
+
+--
+-- Name: project_evaluations_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE project_evaluations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE project_evaluations_id_seq OWNER TO ixistic;
+
+--
+-- Name: project_evaluations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE project_evaluations_id_seq OWNED BY project_evaluations.id;
+
+
+--
+-- Name: projects; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE projects (
+    id integer NOT NULL,
+    name character varying,
+    url character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE projects OWNER TO ixistic;
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE projects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE projects_id_seq OWNER TO ixistic;
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE projects_id_seq OWNED BY projects.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO ixistic;
+
+--
+-- Name: students; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE students (
+    id integer NOT NULL,
+    studentid character varying,
+    name character varying,
+    project_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    lock_version integer DEFAULT 0
+);
+
+
+ALTER TABLE students OWNER TO ixistic;
+
+--
+-- Name: students_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE students_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE students_id_seq OWNER TO ixistic;
+
+--
+-- Name: students_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE students_id_seq OWNED BY students.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY project_evaluations ALTER COLUMN id SET DEFAULT nextval('project_evaluations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY students ALTER COLUMN id SET DEFAULT nextval('students_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2016-09-07 03:10:43.676578	2016-09-07 03:10:43.676578
+\.
+
+
+--
+-- Data for Name: project_evaluations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY project_evaluations (id, score, student_id, project_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: project_evaluations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('project_evaluations_id_seq', 1, false);
+
+
+--
+-- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY projects (id, name, url, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('projects_id_seq', 1, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160831040635
+20160831034524
+20160831034606
+\.
+
+
+--
+-- Data for Name: students; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY students (id, studentid, name, project_id, created_at, updated_at, lock_version) FROM stdin;
+\.
+
+
+--
+-- Name: students_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('students_id_seq', 1, false);
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: project_evaluations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY project_evaluations
+    ADD CONSTRAINT project_evaluations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projects_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT projects_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: students_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY students
+    ADD CONSTRAINT students_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_project_evaluations_on_project_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_project_evaluations_on_project_id ON project_evaluations USING btree (project_id);
+
+
+--
+-- Name: index_project_evaluations_on_student_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_project_evaluations_on_student_id ON project_evaluations USING btree (student_id);
+
+
+--
+-- Name: index_students_on_project_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_students_on_project_id ON students USING btree (project_id);
+
+
+--
+-- Name: fk_rails_328ba14a60; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY students
+    ADD CONSTRAINT fk_rails_328ba14a60 FOREIGN KEY (project_id) REFERENCES projects(id);
+
+
+--
+-- Name: fk_rails_3d3c1c34d2; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY project_evaluations
+    ADD CONSTRAINT fk_rails_3d3c1c34d2 FOREIGN KEY (student_id) REFERENCES students(id);
+
+
+--
+-- Name: fk_rails_f2d256da0f; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY project_evaluations
+    ADD CONSTRAINT fk_rails_f2d256da0f FOREIGN KEY (project_id) REFERENCES projects(id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect studentdb_test
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO ixistic;
+
+--
+-- Name: project_evaluations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE project_evaluations (
+    id integer NOT NULL,
+    score integer,
+    student_id integer,
+    project_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE project_evaluations OWNER TO ixistic;
+
+--
+-- Name: project_evaluations_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE project_evaluations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE project_evaluations_id_seq OWNER TO ixistic;
+
+--
+-- Name: project_evaluations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE project_evaluations_id_seq OWNED BY project_evaluations.id;
+
+
+--
+-- Name: projects; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE projects (
+    id integer NOT NULL,
+    name character varying,
+    url character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE projects OWNER TO ixistic;
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE projects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE projects_id_seq OWNER TO ixistic;
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE projects_id_seq OWNED BY projects.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO ixistic;
+
+--
+-- Name: students; Type: TABLE; Schema: public; Owner: ixistic
+--
+
+CREATE TABLE students (
+    id integer NOT NULL,
+    studentid character varying,
+    name character varying,
+    project_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    lock_version integer DEFAULT 0
+);
+
+
+ALTER TABLE students OWNER TO ixistic;
+
+--
+-- Name: students_id_seq; Type: SEQUENCE; Schema: public; Owner: ixistic
+--
+
+CREATE SEQUENCE students_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE students_id_seq OWNER TO ixistic;
+
+--
+-- Name: students_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ixistic
+--
+
+ALTER SEQUENCE students_id_seq OWNED BY students.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY project_evaluations ALTER COLUMN id SET DEFAULT nextval('project_evaluations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY students ALTER COLUMN id SET DEFAULT nextval('students_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2016-09-07 03:10:43.802211	2016-09-07 03:10:43.802211
+\.
+
+
+--
+-- Data for Name: project_evaluations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY project_evaluations (id, score, student_id, project_id, created_at, updated_at) FROM stdin;
+980190962	1	980190962	980190962	2016-09-07 03:59:56.485334	2016-09-07 03:59:56.485334
+298486374	1	298486374	298486374	2016-09-07 03:59:56.485334	2016-09-07 03:59:56.485334
+\.
+
+
+--
+-- Name: project_evaluations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('project_evaluations_id_seq', 980190963, false);
+
+
+--
+-- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY projects (id, name, url, created_at, updated_at) FROM stdin;
+980190962	Project 1	http://web1.cs.ait.ac.th	2016-09-07 03:59:56.499668	2016-09-07 03:59:56.499668
+298486374	Project 2	http://web2.cs.ait.ac.th	2016-09-07 03:59:56.499668	2016-09-07 03:59:56.499668
+\.
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('projects_id_seq', 980190963, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160831040635
+20160831034524
+20160831034606
+\.
+
+
+--
+-- Data for Name: students; Type: TABLE DATA; Schema: public; Owner: ixistic
+--
+
+COPY students (id, studentid, name, project_id, created_at, updated_at, lock_version) FROM stdin;
+980190962	123456	Matt Dailey	980190962	2016-09-07 03:59:56.506998	2016-09-07 03:59:56.506998	0
+298486374	234567	Qu Lianen	298486374	2016-09-07 03:59:56.506998	2016-09-07 03:59:56.506998	0
+113629430	118802	Werapat	113629430	2016-09-07 03:59:56.506998	2016-09-07 03:59:56.506998	0
+\.
+
+
+--
+-- Name: students_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ixistic
+--
+
+SELECT pg_catalog.setval('students_id_seq', 980190963, true);
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: project_evaluations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY project_evaluations
+    ADD CONSTRAINT project_evaluations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projects_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT projects_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: students_pkey; Type: CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY students
+    ADD CONSTRAINT students_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_project_evaluations_on_project_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_project_evaluations_on_project_id ON project_evaluations USING btree (project_id);
+
+
+--
+-- Name: index_project_evaluations_on_student_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_project_evaluations_on_student_id ON project_evaluations USING btree (student_id);
+
+
+--
+-- Name: index_students_on_project_id; Type: INDEX; Schema: public; Owner: ixistic
+--
+
+CREATE INDEX index_students_on_project_id ON students USING btree (project_id);
+
+
+--
+-- Name: fk_rails_328ba14a60; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY students
+    ADD CONSTRAINT fk_rails_328ba14a60 FOREIGN KEY (project_id) REFERENCES projects(id);
+
+
+--
+-- Name: fk_rails_3d3c1c34d2; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY project_evaluations
+    ADD CONSTRAINT fk_rails_3d3c1c34d2 FOREIGN KEY (student_id) REFERENCES students(id);
+
+
+--
+-- Name: fk_rails_f2d256da0f; Type: FK CONSTRAINT; Schema: public; Owner: ixistic
+--
+
+ALTER TABLE ONLY project_evaluations
+    ADD CONSTRAINT fk_rails_f2d256da0f FOREIGN KEY (project_id) REFERENCES projects(id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect template1
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.2
+-- Dumped by pg_dump version 9.5.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: template1; Type: COMMENT; Schema: -; Owner: ixistic
+--
+
+COMMENT ON DATABASE template1 IS 'default template for new databases';
+
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: ixistic
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM ixistic;
+GRANT ALL ON SCHEMA public TO ixistic;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- PostgreSQL database cluster dump complete
+--
+
