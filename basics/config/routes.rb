@@ -2,12 +2,14 @@ Rails.application.routes.draw do
   get 'home/index'
 
   scope '/basics' do
+
     scope '/1' do
       get '/', to: 'basics#task1', as: 'task1_index'
       get '/exception', to: 'basics#exception'
       get '/exception-explanation', to: 'basics#exception_explanation'
       get '/youtube-top-ten', to: 'basics#youtube_top_ten'
     end
+
     scope '/2' do
       get '/', to: 'basics#task2', as: 'task2_index'
       get '/stocks-i-like', to: 'basics#stocks_i_like'
@@ -20,6 +22,11 @@ Rails.application.routes.draw do
         delete '/clear', to: 'basics#clear_cookie', as: 'clear_cookie'
       end
     end
+
+    scope '/3' do
+      get '/', to: 'basics#task3', as: 'task3_index'
+    end
+
   end
 
   root 'home#index'

@@ -1,0 +1,347 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Assignment 3 Solution</h1>
+  </div>
+</div>
+<div class="row" style="padding-top: 20px;padding-bottom: 20px">
+  <div class="col-md-12">
+    <ul>
+      <li><strong>View <%= link_to 'latest database dump', '/pgdump.txt' %></strong></li>
+      <li><strong>View <%= link_to 'continuous integration report', '#' %></strong></li>
+      <li><strong>View <%= link_to 'issue tracker', 'https://github.com/ixistic/footballry/issues' %></strong></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h3>Plan for our project</h3>
+    <p>
+      Answer the following questions:
+    </p>
+
+    <h5>#1 (a) What will people be able to learn about in the community that you’re building? Alternatively,
+      if you are automating some collaborative workflow, what work will people accomplish with
+      your system?</h5>
+
+    <p>
+      People will be able to:<br>
+      <ul>
+        <li>comment on the football (soccer) games they’ve watched</li>
+        <li>share game schedules, news, and video clips</li>
+        <li>predict scores with one another</li>
+        <li>discuss benefits or shortcomings of teams or players who will be in future games</li>
+        <li>arrange a meet-up for watching games together</li>
+        <li>sell football-themed posters, t-shirts, shoes, accessories, and memorabilia</li>
+        <li>view game schedules and scores of top ten world’s best football leagues plus Thai football
+      league</li>
+        <li>read football-related news (both national and international)</li>
+        <li>listen to online football commentary radios (both national and international)</li>
+        <li>win annual football-themed gifts (first, second, and third place) as active users</li>
+      </ul>
+    </p>
+
+
+    <h5>#1 (b) What do you want people to say about your service after a visit?</h5>
+
+    <p>
+      After using our service, we hope people will say footballry.com is a place to:
+      <ul>
+        <li>hang out with like-minded friends</li>
+        <li>get the latest news about their favorite teams or players</li>
+        <li>track schedules and scores of games</li>
+        <li>buy and sell football-themed creative stuff</li>
+      </ul>
+    </p>
+
+    <h5>#1 (c) What are the relevant distinct user classes?</h5>
+
+    <p>
+      User classes:
+      <ul>
+        <li><b>Regular users:</b> can write posts, attach links, comment on other posts, view news (including
+        schedules and scores), and listen to online commentary radios</li>
+        <li><b>Seller users:</b> in addition to being able to do everything a regular user can, these users can
+        sell football-themed goods, such as posters, t-shirts, shoes, caps, among others, on
+        Footballry.com. But these users must get a paid membership status first. The website
+        authority will verify that the users are legitimate. The seller membership status will then let
+        them open up a shop-front page on Footballry.com</li>
+        <li><b>Advertiser users:</b> with a seller plus membership status, these users not only can do what a
+        regular user and a seller user can but also can advertise their shop-front pages inside the
+        posts or the comments</li>
+        <li><b>Moderator users:</b> can edit posts or comments, encourage and keep the conversations going,
+        make suggestions on improving the website to better accommodate the users. (Long-time
+        and experienced moderators will be appointed as staff members and therefore receives a
+        monthly gift as their bonuses.)</li>
+        <li><b>Staff members:</b> can translate the website’s frontpage into their native languages to serve the
+        users in their regions and can have a role as a moderator user. Staff members must get to
+        know the users in person (as much as possible) to make sure the users have the feeling that
+        they’re part of the community, help with the selling verifications and transactions, and
+        inform the users where the meet-ups are taking place in their regions</li>
+        <li><b>Administrator users:</b> can edit everything</li>
+      </ul>
+    </p>
+
+    <h5>#1 (d) What should a user on a smartphone be able to do?</h5>
+
+    <p>
+      At first smartphone users can access Footballry.com via a smartphone browser and do the activities
+      according to their user classes and enjoy the same services as those through a regular website.
+      Therefore, the website will be developed with a responsive layouts to fit various sizes of
+      smartphone screens. But when the website is popular enough, say serving a hundred users a month,
+      we will create an app that can sync the functions of the website in a real-time fashion.
+    </p>
+
+    <h5>#2. Build two or three profiles for users of your application.</h5>
+
+    <p>
+      <b>User 1 (Regular User)</b><br>
+      (a) Photo<br>
+      (b) Name: Barak Onama<br>
+      Age: 25<br>
+      Gender: Male<br>
+      Nationality: Kenya<br>
+      Marital Status: Married with 2 kids<br>
+      Housing Situation: House Owner<br>
+      Location: Pathumtani<br>
+      Occupation: Data Analyst<br>
+      Organization: AIT Bangkok<br>
+      Income: 40K bath/month<br>
+      (c) Short-term Goal: Watching football with friends who live nearby and talk about it online with
+      friends in other provinces<br>
+      Long-term Goal: Hope to purchase a seller plus membership status so that I can sell the posters I
+      designed to other members<br>
+      (d) What is the final score in the upcoming game: Liverpool versus Manchester United? Because
+      Rooney (a top Man U player) got injured from the last game, Man U has a small chance to win this
+      time.<br>
+      (e) Using a Windows 7 machine wired to a broadband internet connection<br>
+      (f) He enjoys reading news and rumors about his favorite players<br><br>
+      <b>User 2 (Regular User)</b><br>
+      (a) Photo<br>
+      (b) Name: Chaow Paithoon<br>
+      Age: 30<br>
+      Gender: Male<br>
+      Nationality: Thai<br>
+      Marital Status: Married with 1 kids<br>
+      Housing Situation: Condominium Tenant<br>
+      Location: Bangkok<br>
+      Occupation: Hotel Receptionist<br>
+      Organization: Hotel California Bangkok<br>
+      Income: 25K bath/month<br>
+      (c) Short-term Goal: Watching late-night football with friends at the hotel hall<br>
+      Long-term Goal: Hope to purchase a seller plus membership status so that his wife can open up an
+      online shop on the website and sell the football-themed goods from her shop to customers in other
+      provinces<br>
+      (e) Using Windows 7 machine connected to a broadband WiFi<br>
+      (f) Chaow often comments on the football news he’s just read and share it to his friends who are
+      living in Phuket<br><br>
+      <b>User 3 (Regular User)</b><br>
+      (a) Photo<br>
+      (b) Name: Kanda Garcia<br>
+      Age: 29<br>
+      Gender: Female<br>
+      Nationality: Filipino<br>
+      Marital Status: Married with 1 kids<br>
+      Housing Situation: Teachers School Apartment<br>
+      Location: Chiang Mai<br>
+      Occupation: English Teacher<br>
+      Organization: Dream Star School<br>
+      Income: 35K bath/month<br>
+      (c) Short-term Goal: Talking about football with friends in Bangkok and watching football together
+      with them online<br>
+      Long-term Goal: Hope to be a moderator on the website’s English section as she’s spotted several
+      wrong English phrases written on the website’s frontend.<br>
+      (e) Using Mac OSX machine connected to a broadband WiFi<br>
+      (f) She enjoys browsing the products pictures posted in the marketplace section and on the shopfront
+      pages, frequently comments on the football news, sometimes posts her thoughts and links, and
+      shares her opinions on the products she finds creative. (She bought two posters: one from a user
+      who lives in Pattaya, and another from a user who lives in Phuket.)
+    </p>
+
+    <h5>#3. For each class of user identified in Exercise 1a, produce a textual or graphical usage scenario for
+      how that user will experience your service.</h5>
+
+    <p>
+      Usage Scenarios<br><br>
+      [Regular User]<br><br>
+      Prae has just found a green slip in her purse. Aha, she now remembers where she got the slip from:
+      it was handed out to her by several students at the Monument Square when she was commuting
+      home from work at Honda. She is a sales marketing manager there. The slip says: “Love football
+      a.k.a soccer? Join your friends on Footballry.com! Track your favorite players and teams while
+      having fun.”<br><br>
+      She is into football especially the premier league but doubts that her friends are already on the
+      website. After dinner, tired from reading mundane status updates on Facebook, she checks out
+      Footballry.com.<br><br>
+      Hmm, the website is in Thai. A slogan under the logo reads: “Come for the football. Stay for the
+      family.” Hmm, let’s see, she tells herself quietly. The layout looks modern, simple, and uncluttered.
+      On the top right corner, there is a language option. The language dropdown offers Thai and English.
+      She switches to English and turns to the navigation menu. The menu displays the button links of
+      news, schedules, current matches, current scores, and marketplace.<br><br>
+      When she hovers over the news, the news panel drops down, displaying a mixed thumbnails of
+      national and international news all about football. She clicks the headline that says: “For girlfriend,
+      Rooney dumps Man U.” A box appears in the middle of the browser, dimming out the background
+      all around it.. Come on, what is this? She wonders. Oh, a sign-up box! But it asks only an email and
+      a password to sign up? That’s a simple way to sign up. Cute! She thinks. She doesn’t have to fill in
+      a long list of forms. Nope! She clicks away and hovers over the schedules. The schedules dropdown
+      panel displays the schedules of those from the Thai premier league and the UK premier league side
+      by side. Okay, now she knows her favorite players and team are here.<br><br>
+      Moving on, she clicks the marketplace. The marketplace dropdown panel displays several
+      thumbnails of creative photos of players caught in the middle of kicking the ball. Okay, this is a
+      product section; she tells herself quietly. She can spot the links of the categories, such as posters, tshirts,
+      shoes, handbags, hats, socks, and balls. Hmm, there are people here, she tells herself quietly.<br><br>
+      Under the navigation menu, there are a list of latest conversations. Alright, this is forum; she nods to
+      no one in particular. She can see Thai names and familiar locations under the users’ brief statuses
+      beside the conversation rows. After reading the topmost conversations, she agrees that those users
+      are having fun from their recent meet-up for watching football together. That convinces her to sign
+      up.<br><br>
+      As the sign-up process is simple, she verifies her email address with a link that sends her into the
+      website. She checks out the schedules and finds out that Manchester City (Man C) versus
+      Manchester United (Man U) will be playing at 2 am next Saturday. She’s going to tell her friends at
+      work about the upcoming game. For now, she’s browsing the news section. An hour or so later, she
+      switches to the marketplace section, browses the products there, and leaves positive comments on
+      most of them as there are not that many yet.<br><br>
+      A red notification pops up on the message icon on her navigation menu. She clicks the icon and
+      finds out that a user with a Moderator tag has just sent her a welcome message. The moderator user
+      lives in her area near the Monument Square in Bangkok. They starts out a conversation.<br><br>
+      [Seller User]<br><br>
+      Chong has gathered many friends on Footballry.com. Although he hasn’t yet met all of those friends
+      in person, he knows them all quite well as he has also friended them on Facebook. When he told
+      them that he was going to sell the football posters that he painted himself, his friends supported the
+      idea. The pictures he posted on Footballry.com led to several orders. Therefore, he bought a seller
+      membership status to make sure that his online friends feel secure when ordering a poster from him.
+      Because he doesn’t want to deceive anybody, he wants to make his tiny startup legitimate and
+      credible on Footballry.com. He only pays a small amount of membership fee monthly to keep the
+      verified member logo on his profile and his shop-front page and answers a few questions in an
+      interview at a regional Footballry.com office whenever he gets a call. He is happy with the feeling
+      of one community, where each member is looking out for one another. Plus, Footballry.com lets him
+      carry out the business transaction on his own. He arranges a product shipment all by himself after
+      his buyer friend transfers the money to his bank account. As he has shipped several products
+      successfully, he’s got 5-star recommendations on his shop-front page. He’s very happy about that,
+      and now he’s selling not only posters but also other products.<br><br>
+      [Advertiser User]<br><br>
+      Also a seller user, Ganya has talked with Chong and several other seller users and found out that her
+      products are less popular than theirs. Understandably, she’s only been a seller user on
+      Footballry.com for just a month. But can she place advertisements so that more users than those of
+      now see her products? It turns out, yes, she can. After she upgrades her membership status, she
+      sends several advertisement designs to Footballry.com to get an approval as part of the process of
+      placing her ads on strategic locations that Footballry.com has allocated. A day later, she gets a
+      message telling her that her ads have now been approved and shown to other users. Her shop-front
+      page is now experiencing many visits and receiving more and more orders.<br><br>
+      [Moderator User]<br><br>
+      As a moderator user, Pink gets notifications when a user signs in, signs up, or posts an entry or a
+      comment but only for those in her province, which is Bangkok. Pink has just sent a message to a
+      new user named Prae. Being a part of Footballry.com’s inner circle makes her happy, although the
+      commission she receives is quite small. It’s not a bout the money; she tells herself; it’s about being a
+      senior member of the community. The conversation with Prae has just given her a way to have a
+      new friend. She is going to join a meet-up for watching football together with Prae and Prae’s other
+      friends at Prae’s apartment. Additionally, she is also tasked with moderating the conversations and
+      checking their translations on the website. Because some users write in English, she has to make
+      sure that the automatically translated text interprets the original text correctly, either from English to
+      Thai or vice versa. She also responds to any feedback the users in her province tells her. And if
+      those feedbacks related to improving the web features that the users are demanding, she will pass
+      those feedbacks to the administrator users.<br><br>
+      [Staff Member]<br><br>
+      Each staff member monitors the web section that is dedicated to the province she or he is in. Some
+      of the members are appointed from moderator users, and some others are directly employed. Staff
+      members receive salaries and other benefits as other employees at a company do. They are tasked to
+      monitor the user activities including any business deal on Footballry.com to make sure those
+      activities are legal and within the website’s policy.<br><br>
+      [Administrator User]<br><br>
+      Tonk and Gorn are administrative users. They live at separate locations: Tonk is in Bangkok, and
+      Gorn is in Phuket. They stay in touch on a daily basis as they are maintaining the website,
+      improving the layouts, and responding to the requests from the staff members or the moderator
+      users. They’ve just revised the layouts of Footballry.com to make sure the smartphone users can
+      access its content easily. Consequently, the traffic data shows the users are staying longer on the
+      website through their smartphones. But there are still very few new users signing up.<br><br>
+      As the users are staying longer, and the broadband usage has begun to bite into the free quota
+      allocation on Tonk’s Heroku account. To make sure the website can handle a large number of users,
+      Tonk and Gorn have to find out a way to finance the website soon. They have to buy a larger quota
+      than the one now. It is going to be very expensive, and they will loose their investment if the
+      website tanks. However, Tonk and Gorn believe their startup won’t tank anytime soon because the
+      usage traffic trend is increasing.<br><br>
+      But without having at least 100K users, it’ll be tough to find any venture capital. Thus, for now,
+      they’ll invest their own money in Footballry.com. Torn borrows some money from his girlfriend,
+      and Gorn borrows some from his parents. The combination of the money lets them buy a large
+      quota that handle a traffic of 100K users for a year long. Now they have to find a cheap way to
+      market or promote Footballry.com to prospective users before the time limit of the traffic quota
+      running out.<br><br>
+      Gorn has got an idea to print out business-card-sized slips written with catchy phrases to make
+      people join in the website. Tonk applauds the idea and agrees to distribute the slips in Bangkok.
+      Tonk and Gorn get all of their friends to help distribute the slips in their locations.<br><br>
+      In addition to getting 100K users in one year, Tonk and Gorn also have a plan to build an app for
+      Footballry.com so that the smartphone users can stay tuned all the time, get updates in real time, and
+      carry out their social activities on Footballry.com directly via their smartphone app.
+    </p>
+
+    <h5>#4. Evaluate offline alternatives.</h5>
+
+    <p>
+      Although a Wikipedia entry (1) claims that football is the most popular sport in Thailand, we
+      haven’t got any hard data yet to either confirm or reject the claim. However, NIDA as reported by
+      Bangkok Post (2) has polled football fans to find out the most popular UK’s premier league team in
+      Thailand. This result is supported by a study by GlobalWebIndex (7), which also shows that the
+      number of Thailand’s football fans watches the premier league online is the largest compared to the
+      numbers in other ASEAN countries.<br><br>
+      Because of not having other data in hand, we have to make several assumptions here. First, football
+      is the most popular sport in Thailand. Second, the UK premier league is the most popular in
+      Thailand compared to other European leagues, such as Bundes Liga and Italian Division A.
+      Additionally, the Thai premier league is the second most popular compared to the UK’s premier
+      league.<br><br>
+      Using (7) and our own assumptions, we believe that there is a large number of Thai football fans
+      who is using the internet to find information about their favorite teams, watch football together
+      online, and stay in touch with like-minded friends. Accordingly, we reviewed several websites, such
+      as (3), (4), and (5) to find out whether or not they could have accommodated those fans. We believe
+      those websites will not be able to because they don’t any forum needed for a sport fan-based forum
+      website like the one we have in mind. After going through many search results on Google, we found
+      Footytube (8) that can be both a model and a competition for our website. But Footytube doesn’t
+      seem to be focusing on any specific audience as we plan to, and Footytube’s forum section doesn’t
+      seem to be maintained or cleaned up from some spammer users.<br><br>
+      Because none of the forum websites we surveyed have focused on building a forum website for
+      Thai football fans, we will develop one. The forum (Footballry.com) will be mainly in Thai and
+      revolving around two premier leagues only: UK and Thai. However, we will also integrate an
+      English user interface into the website to accommodate minority users who are not Thai nationals
+      but live in Thailand and join in the website because they have the same favorite teams as those other
+      users or because they want to hang out with their Thai friends and talk about football on the
+      website.<br><br>
+      To make sure we always have fresh updates about football news, scores, or schedules, we’ll import
+      the content from other websites such as these ones (3), (6), and (8).<br><br>
+      (1) https://en.wikipedia.org/wiki/Football_in_Thailand<br>
+      (2) http://www.bangkokpost.com/news/sports/1049037/manchester-united-most-popular-eplfootball-
+      team-to-thai-fans-poll<br>
+      (3) Fifa.com<br>
+      (4) ThaiFootball.com<br>
+      (5) http://www.thaileague.co.th/official/<br>
+      (6) http://www.flashscore.com/<br>
+      (7) http://insight.globalwebindex.net/hs-fs/hub/304927/file-2593818997-
+      pdf/Reports/SummaryPremierLeagueFansQ12015.pdf<br>
+      (8) http://www.footytube.com/forums/<br>
+    </p>
+
+    <h5>#5. Evaluate online alternatives.</h5>
+
+    <p>
+
+    </p>
+
+    <h5>#6. Identify where the magnet content for your system is going to come from.</h5>
+
+    <p>
+
+    </p>
+
+    <h5>#7. Decide on hostname and gure out DNS registration procedures.</h5>
+
+    <p>
+
+    </p>
+
+    <h5>#8. Describe the intellectual property rights of you as developers, authors as contributors, and so on.</h5>
+
+    <p>
+
+    </p>
+  </div>
+</div>
+
+
+
+

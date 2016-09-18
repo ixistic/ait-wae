@@ -59,3 +59,441 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 543ms (Views: 526.0ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/basics/2" for 127.0.0.1 at 2016-09-19 01:39:35 +0700
+Processing by BasicsController#task2 as HTML
+  Rendering basics/task2.html.erb within layouts/application
+  Rendered basics/task2.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 185ms (Views: 180.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/2" for 127.0.0.1 at 2016-09-19 01:39:36 +0700
+Processing by BasicsController#task2 as HTML
+  Rendering basics/task2.html.erb within layouts/application
+  Rendered basics/task2.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 180ms (Views: 177.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/2/quotations" for 127.0.0.1 at 2016-09-19 01:39:49 +0700
+Processing by BasicsController#quotations as HTML
+  Rendering basics/quotations.html.erb within layouts/application
+  [1m[36mQuotation Load (21.5ms)[0m  [1m[34mSELECT "quotations".* FROM "quotations" ORDER BY "quotations"."created_at" ASC[0m
+  [1m[36mQuotation Load (18.4ms)[0m  [1m[34mSELECT DISTINCT "quotations"."category" FROM "quotations"[0m
+  Rendered basics/_menu_task2.html.erb (0.8ms)
+  Rendered basics/quotations.html.erb within layouts/application (85.8ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 272ms (Views: 135.4ms | ActiveRecord: 120.7ms)
+
+
+Started GET "/basics/2/stocks-i-like" for 127.0.0.1 at 2016-09-19 01:39:52 +0700
+Processing by BasicsController#stocks_i_like as HTML
+  [1m[35m (14.4ms)[0m  [1m[35mwith m as (select my_stocks.symbol, sum(my_stocks.n_shares) total_shares, sum(stock_prices.price) total_prices from my_stocks join stock_prices on my_stocks.symbol=stock_prices.symbol where stock_prices.price > 322 group by my_stocks.symbol) select * from m union all select 'Total', sum(my_stocks.n_shares), sum(stock_prices.price) from m, my_stocks, stock_prices;[0m
+  Rendering basics/stocks_i_like.html.erb within layouts/application
+  Rendered basics/_menu_task2.html.erb (0.6ms)
+  Rendered basics/stocks_i_like.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 87ms (Views: 68.0ms | ActiveRecord: 14.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-19 01:56:07 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (3.7ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 184ms (Views: 179.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/1" for 127.0.0.1 at 2016-09-19 01:56:09 +0700
+Processing by BasicsController#task1 as HTML
+  Rendering basics/task1.html.erb within layouts/application
+  Rendered basics/task1.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 116ms (Views: 112.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/1" for 127.0.0.1 at 2016-09-19 01:56:42 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BasicsController#task1 as HTML
+  Rendering basics/task1.html.erb within layouts/application
+  Rendered basics/task1.html.erb within layouts/application (7.6ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 503ms (Views: 491.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/1" for 127.0.0.1 at 2016-09-19 01:56:44 +0700
+Processing by BasicsController#task1 as HTML
+  Rendering basics/task1.html.erb within layouts/application
+  Rendered basics/task1.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 87ms (Views: 84.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/1" for 127.0.0.1 at 2016-09-19 01:56:44 +0700
+Processing by BasicsController#task1 as HTML
+  Rendering basics/task1.html.erb within layouts/application
+  Rendered basics/task1.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 109ms (Views: 106.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-19 01:56:48 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 123ms (Views: 102.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-19 01:56:48 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 76ms (Views: 74.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-19 01:56:49 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 69ms (Views: 66.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-19 01:56:52 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 69ms (Views: 66.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-19 01:56:52 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 88ms (Views: 86.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-19 01:57:09 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 67ms (Views: 65.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 01:57:10 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 69ms (Views: 66.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/2" for 127.0.0.1 at 2016-09-19 01:57:17 +0700
+Processing by BasicsController#task2 as HTML
+  Rendering basics/task2.html.erb within layouts/application
+  Rendered basics/task2.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 73ms (Views: 65.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/2" for 127.0.0.1 at 2016-09-19 01:57:17 +0700
+Processing by BasicsController#task2 as HTML
+  Rendering basics/task2.html.erb within layouts/application
+  Rendered basics/task2.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 93ms (Views: 89.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-19 01:57:18 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 100ms (Views: 94.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/1" for 127.0.0.1 at 2016-09-19 01:57:18 +0700
+Processing by BasicsController#task1 as HTML
+  Rendering basics/task1.html.erb within layouts/application
+  Rendered basics/task1.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 73ms (Views: 70.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 01:57:20 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 66ms (Views: 64.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 01:58:26 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 96ms (Views: 93.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 01:58:26 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 68ms (Views: 66.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:00:27 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 154ms (Views: 150.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:00:27 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 83ms (Views: 81.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:00:44 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 71ms (Views: 67.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:02:05 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 72ms (Views: 69.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:04:22 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 188ms (Views: 185.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:04:22 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 81ms (Views: 78.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:05:08 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (9.0ms)
+Completed 200 OK in 91ms (Views: 88.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:05:08 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 83ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:06:29 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 91ms (Views: 88.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:07:37 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 78ms (Views: 75.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:09:01 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 96ms (Views: 91.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:09:01 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 89ms (Views: 87.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:10:05 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 101ms (Views: 97.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:10:05 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 81ms (Views: 78.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:13:42 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (16.6ms)
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:13:42 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (8.3ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 387ms (Views: 376.3ms | ActiveRecord: 0.0ms)
+
+
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 169ms (Views: 124.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:15:49 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 131ms (Views: 122.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:15:49 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 79ms (Views: 76.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:17:53 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 93ms (Views: 90.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:19:04 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_header.html.erb (2.2ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 151ms (Views: 146.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:19:04 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 99ms (Views: 96.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-19 02:27:54 +0700
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (6.4ms)
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 247ms (Views: 233.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/1" for 127.0.0.1 at 2016-09-19 02:27:55 +0700
+Processing by BasicsController#task1 as HTML
+  Rendering basics/task1.html.erb within layouts/application
+  Rendered basics/task1.html.erb within layouts/application (1.3ms)
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:27:55 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 160ms (Views: 155.3ms | ActiveRecord: 0.0ms)
+
+
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 131ms (Views: 119.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/basics/3" for 127.0.0.1 at 2016-09-19 02:27:58 +0700
+Processing by BasicsController#task3 as HTML
+  Rendering basics/task3.html.erb within layouts/application
+  Rendered basics/task3.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 86ms (Views: 82.2ms | ActiveRecord: 0.0ms)
+
+
