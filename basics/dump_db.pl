@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-$dumpname = "public/pgdump.txt";
+$dumpname = "public/db_dump/pgdump.txt";
 for ( $i = 5; $i >= 1; $i-- ) {
     $new = sprintf( "$dumpname.%d", $i );
     if ( $i > 1 ) {
