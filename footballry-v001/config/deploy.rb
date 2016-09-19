@@ -11,6 +11,7 @@ set :default_env, {
     'https_proxy' => '192.41.170.23:3128',
     'ftp_proxy' => '192.41.170.23:3128',
     'HTTPS_PROXY_REQUEST_FULLURI' => 'false',
+    'SECRET_KEY_BASE' => 'b2dcc37e0b0ceb395b978e0439d1d5bb751c58de02d38a62c0760f06ab2bc1c6dd671e8fc9faec8fbb630d3c42e84e2ac736df5bb9fc5437ec4dcc085fcf3e7c'
 }
 
 # Default branch is :master
