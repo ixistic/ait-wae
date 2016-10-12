@@ -39,12 +39,8 @@
     follow your plan for the rest of the project.</h5>
 
     <p>
-      ...
+      Based on what we studied in class, Rails’s best practices (3), and recommendation (1) by experienced Rails developer, Rails 5.x as a framework is secure. By default, Rails 5.x deals with the SQL injection vulnerabilities very well. As long as we do not use any raw SQL commands, our application is secure because Rails 5.x will sanitize any SQL input in each form before processing it. In addition to that, to prevent XSS vulnerabilities, OWASP (4) recommends that we also activate SSL on the server to keep the sessions from being duplicated. Moving forward, we will stick to the Rails’s best practices in writing our code for the project. And whenever we have an urge to write a raw SQL command, we will postpone it and study other alternatives that the Rails community recommends. And on the Heroku web hosting server, where our Footballry project will finally go live, we will buy an SSL service from Heroku so that we can generate our own SSL certificates for our users. That way, we can ensure our project will remain secure.
     </p>
-
-    <ul>
-      <li>...</li>
-    </ul>
 
     <br><br><h5>#3 Audit your software for any sensitive data like database passwords make sure they are secure. Document
     the result of your audit and plan.</h5>
@@ -137,6 +133,10 @@
       <li>(2) https://github.com/CanCanCommunity/cancancan</li>
       <li>(3) https://github.com/sferik/rails_admin</li>
       <li>(4) https://github.com/MiniProfiler/rack-mini-profiler</li>
+      <li>(5) http://guides.rubyonrails.org/security.html</li>
+      <li>(6) https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet#Cross-site_Scripting_.28XSS.29</li>
+      <li>(7) https://reinteractive.net/posts/126-checklist-for-a-rails-application-code-audit</li>
+      <li>(8) http://stackoverflow.com/questions/4696932/can-bundler-show-me-which-gems-in-gemfile-have-newer-versions-eg-dry-run-of-bu</li>
     </ul>
   </div>
 </div>
