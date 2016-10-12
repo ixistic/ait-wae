@@ -50,12 +50,41 @@
     the result of your audit and plan.</h5>
 
     <p>
-      ...
-    </p>
+      To audit our code, we use reference (1) as a guideline.
+    <p>
 
+    <p>
+      <b>Security Issues</b>
+    <p>
     <ul>
-      <li>...</li>
+      <li>Rails is of the latest version: 5.0.0.1 (the latest as of October 12, 2016)</li>
+      <li>Gems are of the newest: $ bundle outdated is run to view which gems are outdated and update them accordingly</li>
+      <li>Password encryption method is handled by Gem Devise</li>
+      <li>Session security, cookie encryption, cross site scripting and other XSS vulnerabilities: most of these mentioned vulnerabilities are dealt with by Rails 5.x by default. Furthermore, we activated SSL on our server to make sure any activity on it is secure.</li>
+      <li>Sql injection vulnerabilities are also dealt with by Rails 5.x and sanitized by default. Additionally, we only ensured that no raw SQL commands were present in the code.</li>
+      <li>Ensuring no passwords are stored in the source code, or committed in any configuration file. Yes, we investigated the application thoroughly to make sure no password of any kind was pushed to the production version.</li>
     </ul>
+    <p>
+      <b>Database Concerns</b>
+    </p>
+    <ul>
+      <li>PostgreSQL is of the latest version: 9.5.4</li>
+      <li>Our tables are normalized. At this point, we have two tables: USER and ROLES. Their relationship is that each user has only one role and that one role can have many users.</li>
+    </ul>
+    <p>
+      <b>Application Setup</b>
+    </p>
+    <ul>
+      <li>Using Gem Capistrano to deploy the application:</li>
+      <li>An issue was with the admin login, but we solved it by manually creating an admin user through PostgreSQL</li>
+    </ul>
+    <p>
+      <b>Assets and Asset Pipeline</b>
+    </p>
+    <ul>
+      <li>Bootstrap, JavaScript, and Jquery being used are by default sanitized by Rails 5.x</li>
+    </ul>
+    </p>
 
     <br><br><h5>#4 Define your user data model.</h5>
 
