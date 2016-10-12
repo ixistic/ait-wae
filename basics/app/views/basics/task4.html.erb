@@ -1,0 +1,117 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Assignment 4 Solution</h1>
+  </div>
+</div>
+<div class="row" style="padding-top: 20px;">
+  <div class="col-md-12">
+    <ul>
+      <li><strong>View <%= link_to 'Latest database dump', '/db_dump/pgdump.txt' %></strong></li>
+      <li><strong>View <%= link_to 'Project management', 'https://github.com/ixistic/footballry/projects/1' %></strong></li>
+      <li><strong>View <%= link_to 'Final project (Footballry)', 'https://web8.cs.ait.ac.th/footballry' %></strong></li>
+      <li><strong>View <%= link_to 'Continuous integration report', 'https://ci.vgl-ait.org/jenkins/job/WAE-2016/job/web8/' %></strong></li>
+      <li><strong>View <%= link_to 'Issue tracker', 'https://github.com/ixistic/footballry/issues' %></strong></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <br><br><h5>#1 All social Web applications have users, content, and some kind of user-to-content map. Specify what
+    kind of information each of these areas will have in your application. See my example in the \Sample
+    structure" page of the course Web site for an idea of what I mean.</h5>
+
+    <p>
+      Content : <br>
+    </p>
+
+    <ul>
+      <li>Game schedules and game scores from previous matches</li>
+      <li>News articles (national and international) including comments and responses</li>
+      <li>Video clips (national and international) including comments and responses</li>
+      <li>Forum topics in which conversations are categorized</li>
+      <li>Conversation entries including comments and responses</li>
+      <li>Targeted product-ads banners appear along conversation entries</li>
+      <li>Product pages including comments and responses in the marketplace section</li>
+      <li>Shop-front pages that certain users own</li>
+    </ul>
+
+    <br><br><h5>#2 Learn how to avoid SQL injection and XSS attacks in your development framework and document and
+    follow your plan for the rest of the project.</h5>
+
+    <p>
+      ...
+    </p>
+
+    <ul>
+      <li>...</li>
+    </ul>
+
+    <br><br><h5>#3 Audit your software for any sensitive data like database passwords make sure they are secure. Document
+    the result of your audit and plan.</h5>
+
+    <p>
+      ...
+    </p>
+
+    <ul>
+      <li>...</li>
+    </ul>
+
+    <br><br><h5>#4 Define your user data model.</h5>
+
+    <p>
+      <img src="<%= asset_path('designs/user_model1.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+      <img src="<%= asset_path('designs/user_model2.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+    </p>
+
+    <br><br><h5>#5 Sketch your user registration and management page flow. See the example on the course home page for an idea.</h5>
+
+    <p>
+      <img src="<%= asset_path('designs/page_flow.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+    </p>
+
+    <br><br><h5>#6 Using the techniques of test-first and behavior-driven development we've studied in class and lab, build up the basic user registration and login pages. Set up SSL for the login page to prevent password sniffing, and set up SSL for all authenticated interaction if session hijacking is a concern.</h5>
+
+    <p>
+      <img src="<%= asset_path('designs/ssl2.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+      <img src="<%= asset_path('designs/ssl.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+    </p>
+
+    <br><br><h5>#7 Again using BDD, build the user administration pages. Make sure admin can 1) see recently registered users, 2) ban a user, and 3) see statistics on user registrations.</h5>
+
+    <p>
+      <img src="<%= asset_path('designs/admin.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+      <img src="<%= asset_path('designs/admin2.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+      <img src="<%= asset_path('designs/admin3.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+    </p>
+
+    <br><br><h5>#8 Use your issue tracker and CI server to their full potential. Start an issue in the issue tracker before
+    you begin any work. Get email notification of broken builds running, and get the CI server to report
+    test coverage and code quality metrics.</h5>
+
+    <p>
+      <img src="<%= asset_path('designs/issue1.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+      <img src="<%= asset_path('designs/issue2.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+      <img src="<%= asset_path('designs/issue3.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+    </p>
+
+    <br><br><h5>#9 Check your model for referential integrity and queries that take a long time and might require further
+    optimization.</h5>
+
+    <p>
+      <img src="<%= asset_path('designs/performance.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+    </p>
+
+    <br><br><h5>References</h5>
+    <ul>
+      <li>(1) https://github.com/plataformatec/devise</li>
+      <li>(2) https://github.com/CanCanCommunity/cancancan</li>
+      <li>(3) https://github.com/sferik/rails_admin</li>
+      <li>(4) https://github.com/MiniProfiler/rack-mini-profiler</li>
+    </ul>
+  </div>
+</div>
+
+
+
+
