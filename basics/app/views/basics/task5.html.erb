@@ -16,127 +16,69 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <br><br><h5>#1 All social Web applications have users, content, and some kind of user-to-content map. Specify what
-    kind of information each of these areas will have in your application. See my example in the \Sample
-    structure" page of the course Web site for an idea of what I mean.</h5>
+    <br><br><h5>#1 Think about how to classify each of the types of content on your site. Articles, comments on articles,
+    news items, questions and answers, documents to be approved or rejected with comments, and so on.
+    Each type of content will require a different flavor of data model and moderation/approval/versioning process.</h5>
+
+    <!--<p>-->
+      <!--Content : <br>-->
+    <!--</p>-->
+
+    <!--<ul>-->
+      <!--<li>Game schedules and game scores from previous matches</li>-->
+      <!--<li>News articles (national and international) including comments and responses</li>-->
+      <!--<li>Video clips (national and international) including comments and responses</li>-->
+      <!--<li>Forum topics in which conversations are categorized</li>-->
+      <!--<li>Conversation entries including comments and responses</li>-->
+      <!--<li>Targeted product-ads banners appear along conversation entries</li>-->
+      <!--<li>Product pages including comments and responses in the marketplace section</li>-->
+      <!--<li>Shop-front pages that certain users own</li>-->
+    <!--</ul>-->
+
+    <br><br><h5>#2 Design your content data model and discuss the implications of your design choices with potential
+    users of the system. In general, there should be at least one category of user-submitted content with
+    authoring workflow specific to your project and at least one question and answer forum. However,
+    the specifics will be very dependent on your project's requirements. Document the design and your
+    discussions on your site.</h5>
 
     <p>
-      Content : <br>
+
     </p>
 
-    <ul>
-      <li>Game schedules and game scores from previous matches</li>
-      <li>News articles (national and international) including comments and responses</li>
-      <li>Video clips (national and international) including comments and responses</li>
-      <li>Forum topics in which conversations are categorized</li>
-      <li>Conversation entries including comments and responses</li>
-      <li>Targeted product-ads banners appear along conversation entries</li>
-      <li>Product pages including comments and responses in the marketplace section</li>
-      <li>Shop-front pages that certain users own</li>
-    </ul>
+    <br><br><h5>#3 Specify the workflow for each kind of content on your site and discuss the implications of your design
+    choices with potential users of the system. Document the workflow design and your discussions on your site.</h5>
 
-    <br><br><h5>#2 Learn how to avoid SQL injection and XSS attacks in your development framework and document and
-    follow your plan for the rest of the project.</h5>
-
-    <p>
-      Based on what we studied in class, Rails’s best practices (3), and recommendation (1) by experienced Rails developer, Rails 5.x as a framework is secure. By default, Rails 5.x deals with the SQL injection vulnerabilities very well. As long as we do not use any raw SQL commands, our application is secure because Rails 5.x will sanitize any SQL input in each form before processing it. In addition to that, to prevent XSS vulnerabilities, OWASP (4) recommends that we also activate SSL on the server to keep the sessions from being duplicated. Moving forward, we will stick to the Rails’s best practices in writing our code for the project. And whenever we have an urge to write a raw SQL command, we will postpone it and study other alternatives that the Rails community recommends. And on the Heroku web hosting server, where our Footballry project will finally go live, we will buy an SSL service from Heroku so that we can generate our own SSL certificates for our users. That way, we can ensure our project will remain secure.
-    </p>
-
-    <br><br><h5>#3 Audit your software for any sensitive data like database passwords make sure they are secure. Document
-    the result of your audit and plan.</h5>
-
-    <p>
-      To audit our code, we use reference (1) as a guideline.
     <p>
 
     <p>
-      <b>Security Issues</b>
-    <p>
-    <ul>
-      <li>Rails is of the latest version: 5.0.0.1 (the latest as of October 12, 2016)</li>
-      <li>Gems are of the newest: $ bundle outdated is run to view which gems are outdated and update them accordingly</li>
-      <li>Password encryption method is handled by Gem Devise</li>
-      <li>Session security, cookie encryption, cross site scripting and other XSS vulnerabilities: most of these mentioned vulnerabilities are dealt with by Rails 5.x by default. Furthermore, we activated SSL on our server to make sure any activity on it is secure.</li>
-      <li>Sql injection vulnerabilities are also dealt with by Rails 5.x and sanitized by default. Additionally, we only ensured that no raw SQL commands were present in the code.</li>
-      <li>Ensuring no passwords are stored in the source code, or committed in any configuration file. Yes, we investigated the application thoroughly to make sure no password of any kind was pushed to the production version.</li>
-    </ul>
-    <p>
-      <b>Database Concerns</b>
-    </p>
-    <ul>
-      <li>PostgreSQL is of the latest version: 9.5.4</li>
-      <li>Our tables are normalized. At this point, we have two tables: USER and ROLES. Their relationship is that each user has only one role and that one role can have many users.</li>
-    </ul>
-    <p>
-      <b>Application Setup</b>
-    </p>
-    <ul>
-      <li>Using Gem Capistrano to deploy the application:</li>
-      <li>An issue was with the admin login, but we solved it by manually creating an admin user through PostgreSQL</li>
-    </ul>
-    <p>
-      <b>Assets and Asset Pipeline</b>
-    </p>
-    <ul>
-      <li>Bootstrap, JavaScript, and Jquery being used are by default sanitized by Rails 5.x</li>
-    </ul>
-    </p>
 
-    <br><br><h5>#4 Define your user data model.</h5>
+    <!--<p>-->
+      <!--<b>Security Issues</b>-->
+    <!--<p>-->
+    <!--<ul>-->
+      <!--<li>Rails is of the latest version: 5.0.0.1 (the latest as of October 12, 2016)</li>-->
+      <!--<li>Gems are of the newest: $ bundle outdated is run to view which gems are outdated and update them accordingly</li>-->
+      <!--<li>Password encryption method is handled by Gem Devise</li>-->
+      <!--<li>Session security, cookie encryption, cross site scripting and other XSS vulnerabilities: most of these mentioned vulnerabilities are dealt with by Rails 5.x by default. Furthermore, we activated SSL on our server to make sure any activity on it is secure.</li>-->
+      <!--<li>Sql injection vulnerabilities are also dealt with by Rails 5.x and sanitized by default. Additionally, we only ensured that no raw SQL commands were present in the code.</li>-->
+      <!--<li>Ensuring no passwords are stored in the source code, or committed in any configuration file. Yes, we investigated the application thoroughly to make sure no password of any kind was pushed to the production version.</li>-->
+    <!--</ul>-->
+    <!--<p>-->
 
-    <p>
-      <img src="<%= asset_path('designs/user_model1.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
-      <img src="<%= asset_path('designs/user_model2.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
-    </p>
+    <br><br><h5>#4 Design your versioning system. What is the versioning system for each type of content? Do you need
+    a complete history of every version, or just a current version with the author of the last version? Make
+    sure you think carefully about the needs of the user community. Document the versioning design on
+    your site.</h5>
 
-    <br><br><h5>#5 Sketch your user registration and management page flow. See the example on the course home page for an idea.</h5>
-
-    <p>
-      <img src="<%= asset_path('designs/page_flow.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
-    </p>
-
-    <br><br><h5>#6 Using the techniques of test-first and behavior-driven development we've studied in class and lab, build up the basic user registration and login pages. Set up SSL for the login page to prevent password sniffing, and set up SSL for all authenticated interaction if session hijacking is a concern.</h5>
-
-    <p>
-      <img src="<%= asset_path('designs/ssl2.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
-      <img src="<%= asset_path('designs/ssl.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
-    </p>
-
-    <br><br><h5>#7 Again using BDD, build the user administration pages. Make sure admin can 1) see recently registered users, 2) ban a user, and 3) see statistics on user registrations.</h5>
-
-    <p>
-      <img src="<%= asset_path('designs/admin.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
-      <img src="<%= asset_path('designs/admin2.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
-      <img src="<%= asset_path('designs/admin3.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
-    </p>
-
-    <br><br><h5>#8 Use your issue tracker and CI server to their full potential. Start an issue in the issue tracker before
-    you begin any work. Get email notification of broken builds running, and get the CI server to report
-    test coverage and code quality metrics.</h5>
-
-    <p>
-      <img src="<%= asset_path('designs/issue1.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
-      <img src="<%= asset_path('designs/issue2.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
-      <img src="<%= asset_path('designs/issue3.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
-    </p>
-
-    <br><br><h5>#9 Check your model for referential integrity and queries that take a long time and might require further
-    optimization.</h5>
-
-    <p>
-      <img src="<%= asset_path('designs/performance.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
-    </p>
+    <!--<p>-->
+      <!--<img src="<%= asset_path('designs/issue1.png') %>" alt="Cannot load image" class="img-thumbnail"><br>-->
+      <!--<img src="<%= asset_path('designs/issue2.png') %>" alt="Cannot load image" class="img-thumbnail"><br>-->
+      <!--<img src="<%= asset_path('designs/issue3.png') %>" alt="Cannot load image" class="img-thumbnail"><br>-->
+    <!--</p>-->
 
     <br><br><h5>References</h5>
     <ul>
-      <li>(1) https://github.com/plataformatec/devise</li>
-      <li>(2) https://github.com/CanCanCommunity/cancancan</li>
-      <li>(3) https://github.com/sferik/rails_admin</li>
-      <li>(4) https://github.com/MiniProfiler/rack-mini-profiler</li>
-      <li>(5) http://guides.rubyonrails.org/security.html</li>
-      <li>(6) https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet#Cross-site_Scripting_.28XSS.29</li>
-      <li>(7) https://reinteractive.net/posts/126-checklist-for-a-rails-application-code-audit</li>
-      <li>(8) http://stackoverflow.com/questions/4696932/can-bundler-show-me-which-gems-in-gemfile-have-newer-versions-eg-dry-run-of-bu</li>
+      <li>(1) http://</li>
     </ul>
   </div>
 </div>
