@@ -18,68 +18,58 @@
   <div class="col-md-12">
     <br><br><h5>#1 Think about how to classify each of the types of content on your site. Articles, comments on articles,
     news items, questions and answers, documents to be approved or rejected with comments, and so on.
-    Each type of content will require a different flavor of data model and moderation/approval/versioning process.</h5>
+    Each type of content will require a different flavor of data model and moderation/approval/versioning process.</h5><br>
 
-    <!--<p>-->
-      <!--Content : <br>-->
-    <!--</p>-->
+    <p>
+      Content types classification : <br>
+    </p>
 
-    <!--<ul>-->
-      <!--<li>Game schedules and game scores from previous matches</li>-->
-      <!--<li>News articles (national and international) including comments and responses</li>-->
-      <!--<li>Video clips (national and international) including comments and responses</li>-->
-      <!--<li>Forum topics in which conversations are categorized</li>-->
-      <!--<li>Conversation entries including comments and responses</li>-->
-      <!--<li>Targeted product-ads banners appear along conversation entries</li>-->
-      <!--<li>Product pages including comments and responses in the marketplace section</li>-->
-      <!--<li>Shop-front pages that certain users own</li>-->
-    <!--</ul>-->
+    <ul>
+      <li><b>Games schedules</b> (Thailand Time [Time - Day, Month Date, Year], Team[1], Team[2], Location, Result)</li>
+      <li><b>Game scores from previous matches</b> (Result, Team[1], Team[2], Location, Thailand Time [Time - Day, Month Date, Year])</li>
+      <li><b>News articles</b> (Title, body, status [accepted = 1, rejected = 0])</li>
+      <li><b>Video clips</b> (Title, body, status [accepted = 1, rejected = 0])</li>
+      <li><b>Forum posts</b> (Title, body, status [accepted = 1, rejected = 0])</li>
+      <li><b>Product posts</b> (Title, body, status [accepted = 1, rejected = 0])</li>
+    </ul>
 
     <br><br><h5>#2 Design your content data model and discuss the implications of your design choices with potential
     users of the system. In general, there should be at least one category of user-submitted content with
     authoring workflow specific to your project and at least one question and answer forum. However,
     the specifics will be very dependent on your project's requirements. Document the design and your
-    discussions on your site.</h5>
+    discussions on your site.</h5><br>
+
+    <p>
+      <img src="<%= asset_path('designs/database.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+    </p>
+
+    <br><br><h5>#3 Specify the workflow for each kind of content on your site and discuss the implications of your design
+    choices with potential users of the system. Document the workflow design and your discussions on your site.</h5><br>
 
     <p>
 
     </p>
 
-    <br><br><h5>#3 Specify the workflow for each kind of content on your site and discuss the implications of your design
-    choices with potential users of the system. Document the workflow design and your discussions on your site.</h5>
-
-    <p>
-
-    <p>
-
-    <!--<p>-->
-      <!--<b>Security Issues</b>-->
-    <!--<p>-->
-    <!--<ul>-->
-      <!--<li>Rails is of the latest version: 5.0.0.1 (the latest as of October 12, 2016)</li>-->
-      <!--<li>Gems are of the newest: $ bundle outdated is run to view which gems are outdated and update them accordingly</li>-->
-      <!--<li>Password encryption method is handled by Gem Devise</li>-->
-      <!--<li>Session security, cookie encryption, cross site scripting and other XSS vulnerabilities: most of these mentioned vulnerabilities are dealt with by Rails 5.x by default. Furthermore, we activated SSL on our server to make sure any activity on it is secure.</li>-->
-      <!--<li>Sql injection vulnerabilities are also dealt with by Rails 5.x and sanitized by default. Additionally, we only ensured that no raw SQL commands were present in the code.</li>-->
-      <!--<li>Ensuring no passwords are stored in the source code, or committed in any configuration file. Yes, we investigated the application thoroughly to make sure no password of any kind was pushed to the production version.</li>-->
-    <!--</ul>-->
-    <!--<p>-->
-
     <br><br><h5>#4 Design your versioning system. What is the versioning system for each type of content? Do you need
     a complete history of every version, or just a current version with the author of the last version? Make
     sure you think carefully about the needs of the user community. Document the versioning design on
-    your site.</h5>
+    your site.</h5><br>
 
-    <!--<p>-->
-      <!--<img src="<%= asset_path('designs/issue1.png') %>" alt="Cannot load image" class="img-thumbnail"><br>-->
-      <!--<img src="<%= asset_path('designs/issue2.png') %>" alt="Cannot load image" class="img-thumbnail"><br>-->
-      <!--<img src="<%= asset_path('designs/issue3.png') %>" alt="Cannot load image" class="img-thumbnail"><br>-->
-    <!--</p>-->
+    <p>
+      For our versioning system, we design to use the same like a forum that correct "created_by" and "last_edited_by".
+      We correct the user that create resources such as posts or comments and also we correct last person that
+      edit the resources. Also we use gem 'papertrail' that keep history of all activity about resources as
+      picture below.
+    </p>
 
-    <br><br><h5>References</h5>
-    <ul>
-      <li>(1) http://</li>
-    </ul>
+    <p>
+      <img src="<%= asset_path('designs/history.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+    </p>
+
+    <!--<br><br><h5>References</h5>-->
+    <!--<ul>-->
+      <!--<li>(1) http://</li>-->
+    <!--</ul>-->
   </div>
 </div>
 
