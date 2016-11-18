@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Assignment 6 Solution</h1>
+  </div>
+</div>
+<div class="row" style="padding-top: 20px;">
+  <div class="col-md-12">
+    <ul>
+      <li><strong>View <%= link_to 'Latest database dump', '/db_dump/pgdump.txt' %></strong></li>
+      <li><strong>View <%= link_to 'Project management', 'https://github.com/ixistic/footballry/projects/1' %></strong></li>
+      <li><strong>View <%= link_to 'Final project (Footballry)', 'https://web8.cs.ait.ac.th/footballry' %></strong></li>
+      <li><strong>View <%= link_to 'Continuous integration report', 'https://ci.vgl-ait.org/jenkins/job/WAE-2016/job/web8/' %></strong></li>
+      <li><strong>View <%= link_to 'Issue tracker', 'https://github.com/ixistic/footballry/issues' %></strong></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <br><br><h5>#1 Think about how to classify each of the types of content on your site. Articles, comments on articles,
+    news items, questions and answers, documents to be approved or rejected with comments, and so on.
+    Each type of content will require a different flavor of data model and moderation/approval/versioning process.</h5><br>
+
+    <p>
+      Content types classification : <br>
+    </p>
+
+    <ul>
+      <li><b>Posts</b>
+        <ul>
+          <li><b>News articles</b></li>
+          <li><b>Video clips</b></li>
+          <li><b>Forum posts</b></li>
+          <li><b>Product posts</b></li>
+        </ul>
+      </li>
+      <li><b>Topics</b> (related to only Forum posts or Product posts)</li>
+      <li><b>Comments</b>
+        <ul>
+          <li><b>Responses</b></li>
+        </ul>
+      </li>
+      <li><b>Match</b>
+        <ul>
+          <li><b>Team</b></li>
+        </ul>
+      </li>
+    </ul>
+
+    <br><br><h5>#2 Design your content data model and discuss the implications of your design choices with potential
+    users of the system. In general, there should be at least one category of user-submitted content with
+    authoring workflow specific to your project and at least one question and answer forum. However,
+    the specifics will be very dependent on your project's requirements. Document the design and your
+    discussions on your site.</h5><br>
+
+    <p>
+      <img src="<%= asset_path('designs/database.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+    </p>
+
+    <br><br><h5>#3 Specify the workflow for each kind of content on your site and discuss the implications of your design
+    choices with potential users of the system. Document the workflow design and your discussions on your site.</h5><br>
+
+    <p>
+      <img src="<%= asset_path('designs/workflow.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+    </p>
+
+    <br><br><h5>#4 Design your versioning system. What is the versioning system for each type of content? Do you need
+    a complete history of every version, or just a current version with the author of the last version? Make
+    sure you think carefully about the needs of the user community. Document the versioning design on
+    your site.</h5><br>
+
+    <p>
+      In our versioning system, we keep the tracks of the users, the posts, and the comments. And to identify the users on the posts or the comments, we use "created_by" and "last_edited_by". To do that on Rails, we use “papertrail” Gem, the result of which can be viewed in the figure below.
+    </p>
+
+    <p>
+      <img src="<%= asset_path('designs/history.png') %>" alt="Cannot load image" class="img-thumbnail"><br>
+    </p>
+
+    <!--<br><br><h5>References</h5>-->
+    <!--<ul>-->
+      <!--<li>(1) http://</li>-->
+    <!--</ul>-->
+  </div>
+</div>
+
+
+
+

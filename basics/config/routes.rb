@@ -35,6 +35,10 @@ Rails.application.routes.draw do
       get '/', to: 'basics#task5', as: 'task5_index'
     end
 
+    scope '/6' do
+      get '/', to: 'basics#task6', as: 'task6_index'
+    end
+
   end
 
   root 'home#index'
